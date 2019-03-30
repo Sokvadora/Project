@@ -1,0 +1,47 @@
+/*[
+    {
+      "name" : "Дворец спорта 'Волна'",
+      "price" : "от 2000 руб./мес",
+      "image" : "beans.jpg",
+      "type" : "sport"
+    },
+    {
+      "name" : "arting",
+      "price" : "от 3000 руб./мес",
+      "image" : "hotdogs.jpg",
+      "type" : "art"
+    },
+    {
+      "name" : "musi",
+      "price" : "от 4000 руб./мес",
+      "image" : "spam.jpg",
+      "type" : "music"
+    },
+    
+  ]*/ 
+
+
+  /*
+{"items":[{"id":"01","text":"TEXT","likes":{"count":1,"can_like":1},"date":0,"comments":{"count":1,"can_post":1},"attachments":[{"type":"photo","photo":{"photo_130":"http://1.jpg","date":0,"id":1}}]},{"id":"02","text":"TEXT2","likes":{"count":2,"can_like":2},"date":0,"comments":{"count":2,"can_post":2},"attachments":[{"type":"photo","photo":{"photo_130":"http://2.jpg","date":0,"id":2}},{"type":"photo","photo":{"photo_130":"http://3.jpg","date":0,"id":3}},{"type":"photo","photo":{"photo_130":"http://4.jpg","date":0,"id":4}}]}]}
+*/
+
+{"users":[
+    {
+        "firstName":"Ray",
+        "lastName":"Villalobos",
+        "joined": {
+            "month":"January",
+            "day":12,
+            "year":2012
+        }
+    },
+    {
+        "firstName":"John",
+        "lastName":"Jones",
+        "joined": {
+            "month":"April",
+            "day":28,
+            "year":2010
+        }
+    }
+]}

@@ -27,10 +27,6 @@
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     
     
-    
-    
-    
-    
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
     
@@ -100,19 +96,22 @@
    <div id="placeholder">
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script>
-  $.getJSON('company.json', function(data) {
-        var output="<ul>";
-        for (var i in data.users) {
-            output+="<li>" + data.users[i].firstName + " " + data.users[i].lastName + "--" + data.users[i].joined.month+"</li>";
+        
+        $.getJSON('company.json', function(data) {
+        let output="<p>";
+        for (let i in data.us) {
+            output+= "<h3>" + data.us[i].firstName + " " + data.us[i].firstName +"</h3>" ;
         }
 
-        output+="</ul>";
+        output+="</p>";
         document.getElementById("placeholder").innerHTML=output;
   });
+
     </script>
 
 
 
+       
 
 </div>
 </div>
@@ -133,12 +132,7 @@
 
 				<div class="col-md-4 animate-box">
 					<h3 class="section-title">Для организаций</h3>
-					<ul class="contact-info">
-						<!--<li><i class="icon-map"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
-						<li><i class="icon-phone"></i>+ 1235 2355 98</li>
-						<li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
-						<li><i class="icon-globe"></i><a href="#">www.yoursite.com</a></li>-->
-					</ul>
+					
 					<h3 class="section-title">Connect with Us</h3>
 					<ul class="social-media">
 						<li><a href="#" class="facebook"><i class="icon-facebook"></i></a></li>
