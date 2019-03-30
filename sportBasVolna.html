@@ -99,8 +99,8 @@
         
         $.getJSON('company.json', function(data) {
         let output="<p>";
-        for (let i in data.us) {
-            output+= "<h3>" + data.us[i].firstName + " " + data.us[i].firstName +"</h3>" ;
+        for (let i in data.sportVolna) {
+            output+= "<h3>" + data.sportVolna[i].nameOrg + " " + data.sportVolna[i].metroOrg +"</h3>" ;
         }
 
         output+="</p>";
