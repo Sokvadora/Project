@@ -145,8 +145,14 @@ input[type="search"] {
 }
 
 
-
-
+input[type="text"] {      
+}
+.notfound{
+display: none;
+}
+.found{
+text-decoration:none;
+}
 
 
 

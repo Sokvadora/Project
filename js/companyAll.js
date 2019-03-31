@@ -122,4 +122,30 @@ function descriptionOrgartIso() {
   output+="</p>";
   document.getElementById("descriptionOrgartIso").innerHTML=output;
 });
+} 
+
+
+
+function search() {
+{window.onload = function() {
+  var hs = document.querySelectorAll('.two  ul');
+  
+  document.querySelector('[autofocus]').oninput = function() {
+      var search = document.querySelector('[autofocus]').value;
+      var val = this.value;
+      var regVal = new RegExp(val, 'i'); // регулярка, с учетом регистра
+      [].forEach.call(hs, function(X) {
+          X.innerHTML.search(regVal) < 0 ? (
+                  X.parentNode.className = 'notfound'
+               
+              ) :
+              (
+                  X.parentNode.className = 'found'
+                  
+              );
+      });
+  }
+  } 
+ }
 }
+

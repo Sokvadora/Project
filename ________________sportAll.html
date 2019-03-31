@@ -13,28 +13,60 @@
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
-<!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="css/icomoon.css">
-<!-- Simple Line Icons -->
-<link rel="stylesheet" href="css/simple-line-icons.css">
+<!-- Icomoon Icon Fonts
+<link rel="stylesheet" href="css/icomoon.css">-->
+<!-- Simple Line Icons 
+<link rel="stylesheet" href="css/simple-line-icons.css">-->
 <!-- Bootstrap  -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <!-- Style -->
 <link rel="stylesheet" href="css/style.css">
-
-
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-
-
-
-
-
-
+<script src="js/companyAll.js"></script>
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
+<!------------------------------------------------------------>
+<!---<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+<!------------------------------------------------------------>
+<style>
+		input{
+		
+		}
+		.notfound{
+		display: none;
+	
 
+		 
+		}
+		.found{
+ 
+		text-decoration:none;
+		}
+</style>
+<script>{window.onload = function() {
+  var hs = document.querySelectorAll('.two  h4');
+  
+  document.querySelector('[autofocus]').oninput = function() {
+      var search = document.querySelector('[autofocus]').value;
+      var val = this.value;
+      var regVal = new RegExp(val, 'i'); // регулярка, с учетом регистра
+      [].forEach.call(hs, function(X) {
+          X.innerHTML.search(regVal) < 0 ? (
+                  X.parentNode.className = 'notfound'
+               
+              ) :
+              (
+                  X.parentNode.className = 'found'
+                  
+              );
+      });
+  }
+  } 
+}
+</script>
+<!---<script>search()</script>-->
 </head>
-<body>
+<body> 
+
 	<header role="banner" id="headerH">
 		<div class="container">
 			<div class="row">
@@ -66,84 +98,76 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-center">
-					<h1 class="animate-box">Дворец спорта "Волна"</h1>
-<!----------------------------------------------------------------------------------->
-					
-
-
-
-<!----------------------------------------------------------------------------------->
+					<h2 class="animate-box">Занятия спортом</h2>
 					
 				</div>
-				
-
-
 			</div>
+        </div>
+        
+        
+
 			
-		</div>
-		
-		
-        <!--
-        <div class="container">
-                <div class="row">
-                    <div class="col-md-12 section-heading text-center">
-                        <p><h3 class="animate-box">В каталоге собраны лучшие в СПб бассейны (цены на абонементы, адреса и официальные сайты указаны на портале), занятия аквааэробикой для взрослых, а также полный список школ плавания для детей. Вы сможете выбрать подходящий в Санкт-Петербурге бассейн по району или метро.</h3></p>
-                        
-                    </div>
-                </div>
-            </div>-->
-
-
-
-
 
 		<div class="fh5co-project">
 			<div class="container">
+					<div class="row">
+
+					<input type="text" placeholder="Поиск" autofocus />
+					</div>
+
 				<div class="row">
+	<!------------>
+					<div class="one col-md-4">
 
+						<div class="two fh5co-portfolio animate-box text-center">
+							<a href="sportAll.html">
 					
-						<div class="col-md-4">
-								<div class="fh5co-portfolio animate-box">
-									<a href="sportAll.html">
-										<div class="portfolio-entry" style="background-image: url(images/portfolio-1.jpg);">
-											<div class="desc" >
-												<p>Solid Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> 
-										
-											
-											</div>
-										</div>
-										<div class="portfolio-text text-center" >
-											<h3>Спорт</h3> 
-
-											
-											
-
-
-
-
-
-
-											<ul class="stuff">
-												<li><i class="icon-heart2"></i>200</li>
-												<li><i class="icon-eye2"></i>248</li>
-												<li><i class="icon-download"></i>240</li>
-											</ul>
-										</div> 
-									</a>
-								</div>
+									 <img src="images/portfolio-9.jpg" class="portfolio-entry">
+									 <!---<div class="desc">
+											<p>Solid Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										</div>--->
+								
+									<h3>Фитнес</h3> 
+									<!-----для сортировки---->
+									 
+									<h4>зал</h4>
+									<h4>спорт</h4>
+									<h4>для детей</h4>
+									
+								  
 							</div>
-					
-                    
+							</a>
+						</div>
+<!------------>
 
+<!------------>
+<div class="one col-md-4">
+
+		<div class="two fh5co-portfolio animate-box text-center">
+			<a href="sportAll.html">
+	
+					 <img src="images/portfolio-9.jpg" class="portfolio-entry">
+					 <!---<div class="desc">
+							<p>Solid Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						</div>--->
+				
+					<h3>Бассейн</h3> 
+					<em style="display:none"> бассейн</em>
 					
-                  
+				</div> 
+			</a>
+		</div>
+<!------------>
+                    </div>
+                    
+                    
 
 				</div>
 			</div>	
         </div>
     </section>
 		
-	</section>
+	
 
 
 
@@ -151,7 +175,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 animate-box">
-					<h3 class="section-title" id="cart">О нас </h3>
+					<h3 class="section-title">О нас</h3>
 					<p>dfhfdhhfdshshss  hrehre trjhtrjt er erkshdjhsdi hewhkthewihiewhiwehwhqwihewkhk  ekehtkewhkhhi  uiehgdsihgkd </p>
 					
 				</div>
@@ -184,6 +208,11 @@
 		</div>
 	</div>
 	
+
+
+	<!--------------------------------------------->
+	<script src="js/companyAll.js"></script>
+<!--------------------------------------------->
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
