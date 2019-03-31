@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
  <html class="no-js"> 
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Diplom</title>
+	<title>Arts</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 
@@ -25,7 +24,9 @@
 
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
-
+<!------------------------------------------------------------>
+<!---<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+<!------------------------------------------------------------>
 </head>
 <body>
 	<header role="banner" id="headerH">
@@ -39,8 +40,9 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
+<!--Прописать ссылки на главную по тегу или классу на странице индекс-->
 							<li class="active"><a href="#" data-nav-section="glavn"><span>Поиск</span></a></li>
-							<li><a href="#" data-nav-section="hobby"><span>Все занятия</span></a></li>
+							<li><a href="#" data-nav-section="hobby"><span>Все занятия</span></a></li> 
 							<li><a href="#" data-nav-section="izbr"><span>Избранное</span></a></li>
 						
 						</ul>
@@ -49,69 +51,57 @@
 			</div>
 	  </div>
 	</header>
-<!-- Секция поиска, главная-->
-	<section id="fh5co-glavn" data-section="glavn" style="background-image: url(images/full_image_4.jpg);" data-stellar-background-ratio="0.5">
-		<div class="gradient"></div>
-		<div class="container">
-			<div class="text-wrap">
-				<div class="text-inner">
-					<div class="row">
-						<!-- Положение на стр бутстрап-->
-						<div class="col-md-8 col-md-offset-2 text-center">
-							<h1 class="animate-box"><span class="big">НАЙДИ</span>
-								<br> <span class="medium">СВОЕ ХОББИ</span></h1>
 
-							<h2 class="animate-box">Лучший способ найти себе занятие </h2>
-							<div class="call-to-action">
-<!-- Или поставить тест отдельной секцией внизу 
-Не знаете что вам подойдет?
-удал <i class="icon-power">-->
-	<!--------ПОИСК------------------------------------------------------------------------------------>
-	<div class="col-md-12  ">  
-	<form action="" method="post" class="search">
-		<input type="search" name="" placeholder="Введите желаемое занятие" class="input" list="search">
-		<datalist id="search">
-			<!---- Стиль для листа поиска-->
-		  <option value="Танцы">
-		  <option value="Гончарное дело">
-		  <option value="Рисование">
-		  <option value="Музыка">
-		  <option value="Кулинарное дело">
-		  <option value="Кино">
-		</datalist spellcheck="true"> 
-		<input type="submit" name="" value="" class="submit" />
-	  </form>
-	  </div>
 
-<!-------------------------------------------------------------------------------------------->
-
-								<!---<a href="#" class="demo animate-box"> Пройти тест</a>-->
-								<!---<a href="#" class="download animate-box"><i class="icon-download"></i> Download</a>-->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-<!-- Секция со всеми хобби --> 
+<!-- Карточки с видами спорта --> 
+<!--надо ли изменить класс <section id="fh5co-hobby" data-section="hobby">-->
 
 	<section id="fh5co-hobby" data-section="hobby">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-center">
-					<h2 class="animate-box">Выбери занятие себе по душе</h2>
+					<h2 class="animate-box">Рисование и творчество</h2>
 					
 				</div>
 			</div>
-		</div>
+        </div>
+        
+         
+<!--------------------ФИЛЬТР---------------------------------------
+			<div>
+				<aside>
+				  <form>
+					<div>
+					  <label for="category">Choose a category:</label>
+					  <select id="category">
+						<option selected>All</option>
+						<option>Vegetables</option>
+						<option>Meat</option>
+						<option>Soup</option>
+					  </select>
+					</div>
+					<div>
+					  <label for="searchTerm">Enter search term:</label>
+					  <input type="text" id="searchTerm" placeholder="e.g. beans">
+					</div>
+					<div>
+					  <button>Filter results</button>
+					</div>
+				  </form>
+				</aside>
+				<main>
+		  
+				</main>
+			  </div
+-------------------------------------------------------->
+
+
 		<div class="fh5co-project">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
-							<a href="sportAll.html">
+							<a href="artSchool.html">
 								<div class="portfolio-entry" style="background-image: url(images/portfolio-1.jpg);">
 									<div class="desc">
 										<p>Solid Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -119,7 +109,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Спорт</h3> 
+									<h3>Детские художественные школы</h3> 
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -128,17 +118,19 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
-							<a href="artAll.html">
+							<a href="#">
 								<div class="portfolio-entry" style="background-image: url(images/portfolio-2.jpg);">
 									<div class="desc">
 										<p>Solid Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Рисование и творчество</h3>
+									<h3>Курсы живописи</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -147,7 +139,9 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -157,7 +151,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Гончарное дело</h3>
+									<h3>Курсы вязания</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -166,7 +160,23 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                
+<!-------
+
+                <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 section-heading text-center">
+                                <h2 class="animate-box">Игровой спорт</h2>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+               
+
+
+                    
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -176,7 +186,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Танцы</h3>
+									<h3>Хоккей</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -185,7 +195,9 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -195,7 +207,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Иностранные языки</h3>
+									<h3>Теннис</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -204,7 +216,9 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -214,7 +228,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Фото и кино</h3>
+									<h3>Футбол</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -223,7 +237,17 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 section-heading text-center">
+                                <h2 class="animate-box">Единоборства</h2>
+                                
+                            </div>
+                        </div>
+                    </div>
+
 
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
@@ -234,7 +258,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Музыка</h3>
+									<h3>Капоэйра</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -243,7 +267,9 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -253,7 +279,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Кулинарное дело</h3>
+									<h3>Бокс</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -262,7 +288,9 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    
+
 					<div class="col-md-4">
 						<div class="fh5co-portfolio animate-box">
 							<a href="#">
@@ -272,7 +300,7 @@
 									</div>
 								</div>
 								<div class="portfolio-text text-center">
-									<h3>Дизайн и декор</h3>
+									<h3>Айкидо</h3>
 									<ul class="stuff">
 										<li><i class="icon-heart2"></i>200</li>
 										<li><i class="icon-eye2"></i>248</li>
@@ -281,12 +309,15 @@
 								</div> 
 							</a>
 						</div>
-					</div>
+                    </div>
+                    ------>
+
 				</div>
 			</div>	
-		</div>
+        </div>
+    </section>
+		
 	
-	</section>
 
 
 
@@ -326,7 +357,12 @@
 			</div>
 		</div>
 	</div>
-	 
+	
+
+
+	<!--------------------------------------------->
+	<script src="js/companyAll.js"></script>
+<!--------------------------------------------->
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -344,4 +380,3 @@
 
 	</body>
 </html>
-

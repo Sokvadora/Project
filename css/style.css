@@ -138,6 +138,23 @@ input[type="search"] {
 /*------------------------------------------------------------------*/
 
 
+#imgOrg img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 a {
   color: rgb(88, 97, 93);
   -webkit-transition: 0.5s;
@@ -568,7 +585,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-test,
 #fh5co-NOT,
-#fh5co-izbran,
+#fh5co-hobby,
 #fh5co-footer,
 #fh5co-work,
 #fh5co-counters,
@@ -579,7 +596,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 768px) {
   #fh5co-test,
   #fh5co-NOT,
-  #fh5co-izbran,
+  #fh5co-hobby,
   #fh5co-footer,
   #fh5co-work,
   #fh5co-counters,
@@ -593,7 +610,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0;
 }
 
-.fh5co-izbran {
+.fh5co-hobby {
   padding-bottom: 40px;
 }
 
