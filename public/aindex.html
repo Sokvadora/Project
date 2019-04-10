@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <name>testdb</name>
+    <link rel="stylesheet" href="style.css" media="all">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Шапка -->
+    <nav>
+        <ul class="menu-main">
+            <li><a href="/">Смотреть</a></li>
+            <li><a href="/recomended1.html">Рекомендации1</a></li>
+            <li><a href="/recomended2.html">Рекомендации2</a></li>
+            <li>
+                <input type="text" id="IDsearch" placeholder="Поиск"/>
+                <button id="btn-search">+</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Контент -->
+    <div class="content">
+
+        <!-- Фильтрация + сортировка -->
+            <ul class="filter-sort">
+                <li class="metros">Жанры
+                    <ul class="submetros">
+                        <li><input type="checkbox" class="boxmetro" id="g0" value=0 />Ладожская</li>
+                        <li><input type="checkbox" class="boxmetro" id="g1" value=1 />комедия</li>
+                        <li><input type="checkbox" class="boxmetro" id="g2" value=2 />драма</li>
+                        <li><input type="checkbox" class="boxmetro" id="g3" value=3 />фантастика</li>
+                        <li><input type="checkbox" class="boxmetro" id="g4" value=4 />ужасы</li>
+                        <li><input type="checkbox" class="boxmetro" id="g5" value=5 />исторический</li>
+                        <li><input type="checkbox" class="boxmetro" id="g6" value=6 />детектив</li>
+                        <li><input type="checkbox" class="boxmetro" id="g7" value=7 />мелодрама</li>
+                        <li><input type="checkbox" class="boxmetro" id="g8" value=8 />триллер</li>
+                        <li><input type="checkbox" class="boxmetro" id="g9" value=9 />вестерн</li>
+                    </ul>
+                </li>
+                <li class="prices">Год
+                    <ul class="subprices">
+                        <li><input type="text" class="boxprice" id="price1" placeholder="год1"/></li>
+                        <li><input type="text" class="boxprice" id="price2" placeholder="год2"/></li>
+                    </ul>
+                </li>
+                <li class="countries">Страны
+                    <ul class="subcountries">
+                        <li><input type="checkbox" class="boxCountry" value="Great Britain" />Великобритания</li>
+                        <li><input type="checkbox" class="boxCountry" value="Italy" />Италия</li>
+                        <li><input type="checkbox" class="boxCountry" value="China" />Китай</li>
+                        <li><input type="checkbox" class="boxCountry" value="Russia" />Россия</li>
+                        <li><input type="checkbox" class="boxCountry" value="USA" />США</li>
+                        <li><input type="checkbox" class="boxCountry" value="France" />Франция</li>
+                    </ul>
+                </li>
+                <li class="sort">Сортировка
+                    <ul class="subsort">
+                        <li><input type="radio" class="boxSort" name="boxSort" value="price" checked/>Рейтинг</li>
+                        <li><input type="radio" class="boxSort" name="boxSort" value="price" />Дата выхода</li>
+                        <li><input type="radio" class="boxSort" name="boxSort" value="age" />Просмотры</li>
+                    </ul>
+                </li>
+                <button id="btn-metro"> Применить настройки </button>
+            </ul>
+            
+
+        <!-- Фильмы -->
+        <div class="orgs"></div>
+        <div id="orgs-more"></div>
+    </div>
+    <script>
+        let allnameorg = [];
+        let countrymetro = [];
+        let getcompanys = [];
+        let allVieworgs = [];
+    //не более 3х выбранных жанров
+        $('.boxmetro:checkbox').click(function(){
+            if ($('.boxmetro:checkbox:checked').length > 3){
+                return false;
+            }
+        })
+        
+//отправка формы и получение готового списка бла бла бла хочу спать
+    $("#btn-metro").click(function () {
+        //жанры
+        let checkedmetro = [];
+        $('.boxmetro:checkbox:checked').each(function(){
+            checkedmetro.push($(this).val())
+        });
+        for (i=0; i < checkedmetro.length; i++) {
+            checkedmetro[i] = Number(checkedmetro[i])
+        }
+        //страны
+        let checkedCountry = [];
+        $('.boxCountry:checkbox:checked').each(function(){
+            checkedCountry.push($(this).val())
+        });
+        //года
+        let checkedprice = [];
+        $('.boxprice:text').val(function(){
+            checkedprice.push($(this).val())
+        });
+        for (i=0; i < checkedprice.length; i++) {
+            checkedprice[i] = Number(checkedprice[i])
+        }
+        //сортировка
+        let checkedSort = "";
+        checkedSort = $('.boxSort:radio:checked').val();
+
+        console.log('Выбрано:',checkedmetro, checkedCountry, checkedprice, checkedSort)
+        $.ajax({
+                url: "/companys",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    metroM: checkedmetro,
+                    priceM: checkedprice,
+                    sortM: checkedSort
+                }),
+                success: function (companys) {
+                    let flag = 0;
+                    let j = 0;
+                    let countryCheck = [];
+
+                    //отборка N выбранных стран (в countryCheck)
+                    if (checkedCountry.length > 0) {
+                        $.each(companys, function (index, org) {
+                            flag = 0;
+                            for (i = 0; i < checkedCountry.length; i++) {
+                                if (org.country == checkedCountry[i]) {
+                                    flag = 1;
+                                    countryCheck[j] = true;
+                                    break;
+                                }
+                            }
+                            j++;
+                        })
+                    //запись выбранных стран в массив counrymetro
+                    j=0;
+                    console.log('countryCheck',countryCheck)
+                    for (i=0; i<companys.length; i++) {
+                        if (countryCheck[i]) {
+                            countrymetro[j] = companys[i];
+                            j++;
+                        }
+                    }
+                    console.log('companys', companys)
+                } else countrymetro = companys;
+                console.log('countrymetro',countrymetro);
+                //получение названий фильмов в массив allnameorg
+                i = 0;
+                $.each(countrymetro, function (index, org) {
+                    allnameorg[i] = org.name;
+                    i++;
+                })
+                console.log('name отфильтрованных фильмов',allnameorg)
+                $('.orgs').empty();
+                GetFilterorg ();
+                }
+            })
+        });
+
+    function GetFilterorg() {
+        let dontVieworgs = allnameorg;
+        let flag = 0;
+        let carts = "";
+        let vieworgs = 0;
+        while ((dontVieworgs.length > 0) && (vieworgs < 3)) {
+            flag = 0;
+            $.each(countrymetro, function (index, org) {
+                if (dontVieworgs[0] == org.name) {
+                    carts += cart(org);
+                    vieworgs++;
+                    flag = 1;
+                }
+            })
+            if (flag == 1) dontVieworgs.splice(0,1);
+        }
+        console.log('vieworgs', vieworgs)  
+        console.log('dontVieworgs', dontVieworgs)
+        
+        $('.orgs').append(carts);
+        $('#orgs-more').empty();
+        $('#orgs-more').append('<button onclick="GetFilterorg()">Показать ещё</button>');
+    }
+
+
+    function Getcompanys1() {
+        $.ajax({
+            url: "/companys",
+            type: "GET",
+            contentType: "application/json",
+            success: function (companys) {
+                let carts = "";
+                let vieworgs = 0;
+                $.each(companys, function (index, org) {
+                    //записываем названия всех выводимых фильмов в allVieworgs
+                    allVieworgs[index] = org.name;
+                });
+                getcompanys = companys;
+                Getcompanys2();
+            }
+        });
+    }
+
+    // Получение всех фильмов
+    function Getcompanys2() {
+        let carts = "";
+        let vieworgs = 0;
+        let dontVieworgs = allVieworgs;
+        while ((dontVieworgs.length > 0) && (vieworgs < 5)) {
+            flag = 0;
+            $.each(getcompanys, function (index, org) {
+                if (dontVieworgs[0] == org.name) {
+                    // добавляем полученные элементы
+                    carts += cart(org);
+                    vieworgs++;
+                    flag = 1;
+                }
+            })
+            if (flag == 1) dontVieworgs.splice(0, 1);
+        }
+        console.log('vieworgs', vieworgs)
+        console.log('dontVieworgs', dontVieworgs)
+        $(".orgs").append(carts);
+        $('#orgs-more').empty();
+        $('#orgs-more').append('<button onclick="Getcompanys2()">Показать ещё</button>');   
+    }
+
+    /////////////////поиск
+    $("#btn-search").click(function () {
+        let letSearch = [];
+        let carts = "";
+        $('#IDsearch:text').val(function(){
+            letSearch.push($(this).val())
+        });
+        $.ajax({
+                url: "/search",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    searchM: letSearch
+                }),
+                success: function (sumSearch) {
+                    $.each(sumSearch, function (index, search) {
+                        console.log(search);
+                        carts += cart(search);
+                    })    
+                $(".orgs").empty();
+                $(".orgs").append(carts);
+                }
+            })
+    });
+
+    // вывод фильмов
+    let cart = function (org) {
+        return "<div class='cart' id='" + org._id + "'>" +
+            "<a class='name' href='/org/" + org.name + "'>" + org.name + "</a></br>" +
+            "<img src='/img/" + org.img + "' /></br>" +
+            org.metro + "</br> Рейтинг: " + org.price +
+            "</br> Режиссёр: " + org.metro +
+            "</div>";
+    }
+    Getcompanys1()
+    </script>
+</body>
+
+</html>

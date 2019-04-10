@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sports</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+	<script src="js/companyAll.js"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts
+<link rel="stylesheet" href="css/icomoon.css">-->
+	<!-- Simple Line Icons 
+<link rel="stylesheet" href="css/simple-line-icons.css">-->
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Style -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!------------------------------------------------------------>
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<!------------------------------------------------------------>
+</head>
+
+
+<body>
+  
+
+    <header role="banner" id="headerH">
+		<div class="container">
+			<div class="row">
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="navbar-header">
+						<!-- Mobile Toggle Menu Button -->
+						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar"><i></i></a>
+						<a class="navbar-brand" href="index.html">НСХ</a>
+					</div>
+					
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<!--Прописать ссылки на главную по тегу или классу на странице индекс-->
+							<li class="active"><a href="#" data-nav-section="glavn"><span>Поиск</span></a></li>
+							<li><a href="#" data-nav-section="hobby"><span>Все занятия</span></a></li>
+							<li><a href="#" data-nav-section="izbr"><span>Избранное</span></a></li>
+
+						</ul></div>
+						<script>
+				search()
+            </script>
+            
+                         <input type="text" placeholder="Плавание" class = " text-center" autofocus />
+                         <button> <script> price()</script> </button>
+					
+				</nav>
+			</div>
+		</div>
+	</header>
+
+    <section id="fh5co-hobby" data-section="hobby">
+        <div class="fh5co-project">
+            <section class="container">
+                <div class="row">
+                   
+                         
+                     
+
+        <!-- Фильмы -->
+        <div class="orgs" >  </div>
+         
+     
+
+        <script>
+                let allTitleorg = [];
+                let countrymetro = [];
+                let getorgs = [];
+                let allVieworgs = [];
+            //не более 3х выбранных жанров
+               
+                
+        //отправка формы и получение готового списка бла бла бла хочу спать
+            
+        
+            function GetFilterorg() {
+                let dontVieworgs = allTitleorg;
+                let flag = 0;
+                let carts = "";
+                let vieworgs = 0;
+                while ((dontVieworgs.length > 0) && (vieworgs < 3)) {
+                    flag = 0;
+                    $.each(countrymetro, function (index, org) {
+                        if (dontVieworgs[0] == org.title) {
+                            carts += cart(org);
+                            vieworgs++;
+                            flag = 1;
+                        }
+                    })
+                    if (flag == 1) dontVieworgs.splice(0,1);
+                }
+                
+                
+                $('.orgs').append(carts);
+                $('#orgs-more').empty();
+               
+            }
+        
+        
+            function Getorgs1() {
+                $.ajax({
+                    url: "/orgs",
+                    type: "GET",
+                    contentType: "application/json",
+                    success: function (orgs) {
+                        let carts = "";
+                        let vieworgs = 0;
+                        $.each(orgs, function (index, org) {
+                            //записываем названия всех выводимых фильмов в allVieworgs
+                            allVieworgs[index] = org.title;
+                        });
+                        getorgs = orgs;
+                        Getorgs2();
+                    }
+                });
+            }
+        
+            // Получение всех фильмов
+            function Getorgs2() {
+                let carts = "";
+                let vieworgs = 0;
+                let dontVieworgs = allVieworgs;
+                while ((dontVieworgs.length > 0) && (vieworgs < 5)) {
+                    flag = 0;
+                    $.each(getorgs, function (index, org) {
+                        if (dontVieworgs[0] == org.title) {
+                            // добавляем полученные элементы
+                            carts += cart(org);
+                            vieworgs++;
+                            flag = 1;
+                        }
+                    })
+                    if (flag == 1) dontVieworgs.splice(0, 1);
+                }
+               
+                $(".orgs").append(carts);
+                $('#orgs-more').empty();
+                 
+            }
+        
+             
+        
+            // вывод фильмов
+            let cart = function (org) {
+               
+        return  "<div class='col-md-4'>"+
+            // "<div class='fh5co-portfolio animate-box>" +
+
+           "<div class='cart fh5co-portfolio ' id='" + org._id + "'>" + 
+             //"<div class='cart fh5co-portfolio ' id='" + org._id + "'>" +
+               // 
+           // "<img src='/image/" + org.img + "' /></br>" +
+             
+            "<a class='name ' href='/org/" + org.name + "'>"  + 
+
+            "<div class='portfolio-entry'>"+
+
+                "<img src='/images/"+ org.img + "' class='portfolio-entry'/>"+
+                "<div class='desc'>"+ "<p>"+"СЮДА ПЕРЕДАТЬ ОПИСАНИЕ"+"</p>"    +"</div>"+
+"</div>"+
+"<h3 class='text-center'>"+ org.name + "</h3>"+
+
+
+          //  "<p >"+org.age + 
+                "</br> Цена: " + org.price +
+            "</br> URL: " + org.url  +"</br> " + org.metro  + "</p>"+
+            "</div>"
+
+
+            +"</div>"+ "</a>"  +"</div>"   
+            
+            
+            ;
+            }
+            Getorgs1()
+            </script>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+<div id="fh5co-footer" role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 animate-box">
+                <h3 class="section-title">О нас</h3>
+                <p>dfhfdhhfdshshss hrehre trjhtrjt er erkshdjhsdi hewhkthewihiewhiwehwhqwihewkhk ekehtkewhkhhi uiehgdsihgkd
+                </p>
+
+            </div>
+
+            <div class="col-md-4 animate-box">
+                <h3 class="section-title">Для организаций</h3>
+                <ul class="contact-info">
+                    <!--<li><i class="icon-map"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                   <li><i class="icon-phone"></i>+ 1235 2355 98</li>
+                   <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
+                   <li><i class="icon-globe"></i><a href="#">www.yoursite.com</a></li>-->
+                </ul>
+                <h3 class="section-title">Connect with Us</h3>
+                <ul class="social-media">
+                    <li><a href="#" class="facebook"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#" class="dribbble"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#" class="github"><i class="icon-github-alt"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copy-right">&copy; 2019 All Rights Reserved. <br>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--------------------------------------------->
+<script src="js/companyAll.js"></script>
+<!--------------------------------------------->
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="js/jquery.stellar.min.js"></script>
+<!-- Counters -->
+<script src="js/jquery.countTo.js"></script>
+<!-- Main JS (Do not remove) -->
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
+
+
+
+</body>
+
+</html>
