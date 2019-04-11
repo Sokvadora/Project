@@ -141,7 +141,17 @@ app.post("/search", jsonParser, function(req, res){
     const letSearch2 = req.body.search2[0];
     let sumSearch = [];
 
-    if (!(letSearch1.length == 0) && !(letSearch2 == 0)) {
+
+//если оба поля пусты - вывести все
+     
+if ((letSearch1.length == 0) && (letSearch2 == 0)){ 
+    db.collection("orgs").find({}).toArray(function(err, orgs){
+        if(err) return console.log(err);
+        res.send(orgs)
+    });
+}
+// если выбран ключ и метро - показать совпадения
+else if (!(letSearch1.length == 0) && !(letSearch2 == 0)) {
         //поиск по ключевым словам
         db.collection("orgs").find({"key" : letSearch1}).toArray(function(err, searchkey){
             if(err) return console.log(err);
@@ -174,7 +184,7 @@ app.post("/search", jsonParser, function(req, res){
             res.send(sumSearch);
         
         });
-            } else {
+            } else { // только метро или ключ
  //поиск по ключевым словам
  db.collection("orgs").find({"key" : letSearch1}).toArray(function(err, searchkey){
     if(err) return console.log(err);
@@ -195,7 +205,7 @@ db.collection("orgs").find({ "metro": letSearch2 }).toArray(function (err, searc
     res.send(sumSearch);
 });
             }
-   
+           
 });
  
 

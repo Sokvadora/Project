@@ -59,7 +59,7 @@
                         
                                 
                         <form   action=" "     class="search_name">      
-                        <input type="text" id="IDsearch" placeholder="Танцы" autofocus" class="input_btn" > 
+                        <input type="text" id="IDsearch" placeholder="Танцы"  autofocus" class="input_btn" > 
                        <input type="button" name="" value="" class="submit " id="btn-search" /> </form>
                        
                           
@@ -99,6 +99,8 @@
                 let countrymetro = [];
                 let getorgs = [];
                 let allVieworgs = [];
+                
+   
 
 
         //отправка формы и получение готового списка 
@@ -212,8 +214,9 @@
                 }
             })
     });
+    
 // вывод организаций
-            let cart = function (org) {  
+            let cart = function AllOrg (org) {  
         return  "<div class='col-md-4'>"+
            "<div class='cart fh5co-portfolio ' id='" + org._id + "'>" + 
             "<a class='name ' href='/org/" + org.name + "'>"  + 
