@@ -35,7 +35,7 @@ app.get("/orgs", function(req, res){
 
 
 
-
+/*
 
 //фильтрация и сортировка
 app.post("/movies", jsonParser, function (req, res) {
@@ -89,7 +89,7 @@ app.post("/movies", jsonParser, function (req, res) {
             });
         }
         */
-    } else {
+   /* } else {
 
         if (checkedSort == "price") {
             db.collection("orgs").find({}).sort({"rating" : -1}).toArray(function(err, orgs){
@@ -97,7 +97,7 @@ app.post("/movies", jsonParser, function (req, res) {
                 res.send(orgs)
                // console.log(orgs)
             });
-        }
+        }*/
         /*
         if (checkedSort == "rating") {
             db.collection("films").find({"year" : { $gte: checkedYear1, $lte: checkedYear2}}).sort({"rating" : -1}).toArray(function(err, movies){
@@ -123,15 +123,15 @@ app.post("/movies", jsonParser, function (req, res) {
             });
         }
         */
-    }
+   // }
     
-});
+//}); 
 
 
 
+ 
 
-
-//----------------------------пewrwrк-------------------------------
+//----------------------------Поиск-------------------------------
 app.post("/search", jsonParser, function(req, res){  
 
     if(!req.body) return res.sendStatus(400);
@@ -215,7 +215,7 @@ db.collection("orgs").find({ "metro": letSearch2 }).toArray(function (err, searc
 
 
 
-/*---------------------------поиск-------------------------------
+/*----------------------------------------------------------
 app.post("/search", jsonParser, function(req, res){  
 
     if(!req.body) return res.sendStatus(400);
