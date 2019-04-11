@@ -30,7 +30,7 @@ app.get("/companys", function(req, res){
     });
 });
 
-
+//----------------------------------------------------------
 
 app.post("/search", jsonParser, function(req, res){  
 
@@ -60,6 +60,11 @@ app.post("/search", jsonParser, function(req, res){
     });
 });
 
+
+//----------------------------------------------------------
+
+
+
 //фильтрация и сортировка
 app.post("/companys", jsonParser, function (req, res) {
        
@@ -71,28 +76,27 @@ app.post("/companys", jsonParser, function (req, res) {
     let checkedprice2 = checkedprice[1]
     if (checkedprice2 == 0) checkedprice2 = 10000;
     const checkedSort = req.body.sortM;
-    console.log(checkedmetro)
-    console.log(checkedprice1, checkedprice2)
+   
     const db = req.app.locals.db;
-
+ 
     //проверка на жанры
     if (!(checkedmetro.length == 0)) {
         if (checkedSort == "price") {
-            db.collection("orgs").find({"metroN" : { $all : checkedmetro}, "price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"price" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({"metroN" : { $all : checkedmetro}}).sort({"price" : -1}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)
             });
         }
         if (checkedSort == "price") {
-            db.collection("orgs").find({"metroN" : { $all : checkedmetro}, "price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"price" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({"metroN" : { $all : checkedmetro}}).sort({"price" : -1}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)
             });
         }
         if (checkedSort == "age") {
-            db.collection("orgs").find({"metroN" : { $all : checkedmetro}, "price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"age" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({"metroN" : { $all : checkedmetro}}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)
@@ -101,21 +105,21 @@ app.post("/companys", jsonParser, function (req, res) {
         
     } else {
         if (checkedSort == "price") {
-            db.collection("orgs").find({"price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"price" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({}).sort({"price" : -1}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)
             });
         }
         if (checkedSort == "price") {
-            db.collection("orgs").find({"price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"price" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({}).sort({"price" : -1}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)
             });
         }
         if (checkedSort == "age") {
-            db.collection("orgs").find({"price" : { $gte: checkedprice1, $lte: checkedprice2}}).sort({"age" : -1}).toArray(function(err, companys){
+            db.collection("orgs").find({}).toArray(function(err, companys){
                 if(err) return console.log(err);
                 res.send(companys)
                 console.log(companys)

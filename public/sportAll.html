@@ -53,15 +53,33 @@
 							<li><a href="#" data-nav-section="hobby"><span>Все занятия</span></a></li>
 							<li><a href="#" data-nav-section="izbr"><span>Избранное</span></a></li>
 
-						</ul></div>
-					 
-                       
+                        </ul></div>
+                        
+
+                        
+                                
                         <form   action=" "     class="search_name">      
                         <input type="text" id="IDsearch" placeholder="Танцы" autofocus" class="input_btn" > 
                        <input type="button" name="" value="" class="submit " id="btn-search" /> </form>
-                         
-					 	 
+                       
                           
+ <!--------------------------------------------------------------------------------->					 	
+ <input    name="metro" type="text" id="IDsearch2" />
+ <select id="metroId">
+    <option value="">Метро</option>
+    <option value="Ладожская">Ладожская</option>
+    <option value="Кировский завод">Кировский завод</option>
+    <option value="Дыбенко">Дыбенко</option>
+    <option value="Обводный канал">Обводный канал</option>
+     
+ </select>
+   <button id="btn-xx"> GO </button>
+   <script>$('select#metroId').on('change', function() {
+         $('input[name="metro"]').val(this.value);
+       });</script> 
+                            
+ <!--------------------------------------------------------------------------------->
+
                          
 				</nav>
 			</div>
@@ -162,7 +180,38 @@
             })
     });
 */
+        //---------------------------------------------------------- /////////////////поиск
+    $("#btn-xx").click(function () {
+        let letSearch1 = [];
+        let letSearch2 = [];
+        let carts = "";
         
+        $('#IDsearch:text').val(function(){
+            letSearch1.push($(this).val())
+        });
+        $('#IDsearch2:text').val(function(){
+            letSearch2.push($(this).val())
+        });
+        
+
+        $.ajax({
+                url: "/search",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    search1: letSearch1,
+                    search2: letSearch2
+                }),
+                success: function (sumSearch) {
+                    $.each(sumSearch, function (index, search) {
+                        console.log(search);
+                        carts += cart(search);
+                    })    
+                $(".orgs").empty();
+                $(".orgs").append(carts);
+                }
+            })
+    });
 // вывод организаций
             let cart = function (org) {  
         return  "<div class='col-md-4'>"+
@@ -222,7 +271,7 @@
         </div>
     </div>
 </div>
-
+<script>search2()</script> 
 <!--------------------------------------------->
 <script>search()</script> 
 <!--------------------------------------------->

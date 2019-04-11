@@ -129,6 +129,83 @@ app.post("/movies", jsonParser, function (req, res) {
 
 
 
+
+
+//----------------------------пewrwrк-------------------------------
+app.post("/search", jsonParser, function(req, res){  
+
+    if(!req.body) return res.sendStatus(400);
+    const db = req.app.locals.db;
+
+    const letSearch1 = req.body.search1[0];
+    const letSearch2 = req.body.search2[0];
+    let sumSearch = [];
+
+    if (!(letSearch1.length == 0) && !(letSearch2 == 0)) {
+        //поиск по ключевым словам
+        db.collection("orgs").find({"key" : letSearch1}).toArray(function(err, searchkey){
+            if(err) return console.log(err);
+            searchM1 = searchkey;  
+        });
+
+        /*db.collection("orgs").find({"year" : letSearch3}).toArray(function(err, searchkey){
+            if(err) return console.log(err);
+            searchM3 = searchkey;    
+        });*/
+        //поиск по станции метро
+        db.collection("orgs").find({ "metro": letSearch2 }).toArray(function (err, searchkey) {
+            if (err) return console.log(err);
+            //res.send(searchmetro)
+            /*if (searchmetro.length > 0)
+                for (i = 0; i < searchmetro.length; i++)
+                    sumSearch.push(searchmetro[i]);*/
+            searchM2 = searchkey;
+            for (i=0; i< searchM1.length; i++) {
+                for (j=0; j< searchM2.length; j++) {
+                        //for (y=0; y < searchM3.length; yy+)
+                    if (searchM1[i].name == searchM2[j].name) {
+                        sumSearch.push(searchM1[i]);
+                        console.log(searchM1[i]);
+                        continue;
+                    }
+                }
+            }
+            console.log(sumSearch)
+            res.send(sumSearch);
+        
+        });
+            } else {
+ //поиск по ключевым словам
+ db.collection("orgs").find({"key" : letSearch1}).toArray(function(err, searchkey){
+    if(err) return console.log(err);
+    //res.send(searchname)
+    if (searchkey.length > 0)
+        for (i = 0; i < searchkey.length; i++)
+            sumSearch.push(searchkey[i])
+        //console.log('sumSearch1:',sumSearch)
+});
+//поиск по станции метро
+db.collection("orgs").find({ "metro": letSearch2 }).toArray(function (err, searchmetro) {
+    if (err) return console.log(err);
+    //res.send(searchmetro)
+    if (searchmetro.length > 0)
+        for (i = 0; i < searchmetro.length; i++)
+            sumSearch.push(searchmetro[i]);
+   // console.log('sumSearch2:', sumSearch)
+    res.send(sumSearch);
+});
+            }
+   
+});
+ 
+
+
+
+
+
+
+
+/*---------------------------поиск-------------------------------
 app.post("/search", jsonParser, function(req, res){  
 
     if(!req.body) return res.sendStatus(400);
@@ -157,7 +234,7 @@ app.post("/search", jsonParser, function(req, res){
     });
 });
 
-
+*/ 
 
 //dddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 app.get("/orgs", function(req, res){  

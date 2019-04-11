@@ -153,8 +153,44 @@ function descriptionOrgartIso() {
 }
 
 
+
+
 //ФУНКЦИЯ ПОИСКА 
-function search() {
+/*function search2() {
+  {
+    //поиск по ключу и метро
+    $("#btn-search").click(function () {
+      let letSearch = [];
+      let carts = "";
+      $('#IDsearch:text').val(function(){
+          letSearch.push($(this).val())
+           
+      });
+      $.ajax({
+              url: "/search",
+              contentType: "application/json",
+              method: "POST",
+              data: JSON.stringify({
+                  searchM: letSearch
+              }),
+              success: function (sumSearch) {
+                  $.each(sumSearch, function (index, search) {
+                      //console.log(search);
+                      carts += cart(search);
+                  })    
+              $(".orgs").empty();
+              $(".orgs").append(carts);
+              }
+          })
+  });
+  }
+}*/
+
+
+
+/*
+//ФУНКЦИЯ ПОИСКА 
+function search2() {
   {
     //поиск по ключу и метро
     $("#btn-search").click(function () {
@@ -183,6 +219,9 @@ function search() {
   });
   }
 }
+*/
+
+
 /*---------------------------
 
 function myFunction() {
