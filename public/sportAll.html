@@ -23,6 +23,11 @@
 	<!-- Style -->
 	<link rel="stylesheet" href="css/style.css">
 
+
+   
+
+
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!------------------------------------------------------------>
@@ -56,15 +61,15 @@
                         </ul></div>
                         
 
-                        
+                        <!---------------------------Ключевые слова------------------------------------------------------>	
                                 
                         <form   action=" "     class="search_name">      
                         <input type="text" id="IDsearch" placeholder="Танцы"  autofocus" class="input_btn" > 
-                       <input type="button" name="" value="" class="submit " id="btn-search" /> </form>
-                       
+               </form>
+              <!--------------------------------------------------------------------------------->          
                           
- <!--------------------------------------------------------------------------------->					 	
- <input    name="metro" type="text" id="IDsearch2" />
+ <!---------------------------Метро------------------------------------------------------>					 	
+ <input    name="metro" type="text" id="IDsearch2" style="display:none"/>
  <select id="metroId">
     <option value="">Метро</option>
     <option value="Ладожская">Ладожская</option>
@@ -73,14 +78,33 @@
     <option value="Обводный канал">Обводный канал</option>
      
  </select>
-   <button id="btn-xx"> GO </button>
+  
    <script>$('select#metroId').on('change', function() {
          $('input[name="metro"]').val(this.value);
        });</script> 
                             
- <!--------------------------------------------------------------------------------->
+ <!-----------------------------кукуку---------------------------------------------------->
 
-                         
+ <input    name="age" type="text" id="IDsearch3"  style="display:none" />
+ <select id="ageId">
+    <option value="">Все</option>
+    <option value="дети">Дети</option>
+    <option value="взрослые">Взрослые</option>
+    <option value="60+">60+</option>
+  
+     
+ </select>
+    <button id="btn-xx"> Поиск </button>
+   <script>$('select#ageId').on('change', function() {
+         $('input[name="age"]').val(this.value);
+       });</script> 
+  
+
+ <!---- <input type="text" id="find">
+
+  <script> document.getElementById('find').value = 5</script>-->
+  
+   <!------------------------------------------------------------------------------------->                      
 				</nav>
 			</div>
 		</div>
@@ -154,47 +178,28 @@
                 $('#orgs-more').empty();
                  
             }
-        
-     /*        
-//поиск по ключу и метро
-            $("#btn-search").click(function () {
-        let letSearch = [];
-        let carts = "";
-        $('#IDsearch:text').val(function(){
-            letSearch.push($(this).val())
-             
-        });
-        $.ajax({
-                url: "/search",
-                contentType: "application/json",
-                method: "POST",
-                data: JSON.stringify({
-                    searchM: letSearch
-                }),
-                success: function (sumSearch) {
-                    $.each(sumSearch, function (index, search) {
-                        console.log(search);
-                        carts += cart(search);
-                    })    
-                $(".orgs").empty();
-                $(".orgs").append(carts);
-                }
-            })
-    });
-*/
+     
         //---------------------------------------------------------- /////////////////поиск
     $("#btn-xx").click(function () {
         let letSearch1 = [];
         let letSearch2 = [];
+        let letSearch3 = []; /////////////////////////////////////////////
         let carts = "";
         
         $('#IDsearch:text').val(function(){
-            letSearch1.push($(this).val())
+ 
+let str = $(this).val()
+let res = str.toLowerCase() //перевести введенное значение в нижний регистр
+            letSearch1.push(res )
+           
         });
         $('#IDsearch2:text').val(function(){
             letSearch2.push($(this).val())
         });
-        
+        ///////////////////////////////////////////////////////
+        $('#IDsearch3:text').val(function(){
+            letSearch3.push($(this).val())
+        });
 
         $.ajax({
                 url: "/search",
@@ -202,7 +207,8 @@
                 method: "POST",
                 data: JSON.stringify({
                     search1: letSearch1,
-                    search2: letSearch2
+                    search2: letSearch2,
+                    search3: letSearch3 ///////////////
                 }),
                 success: function (sumSearch) {
                     $.each(sumSearch, function (index, search) {
@@ -213,6 +219,7 @@
                 $(".orgs").append(carts);
                 }
             })
+
     });
     
 // вывод организаций
@@ -274,6 +281,8 @@
         </div>
     </div>
 </div>
+ 
+ 
 <script>search2()</script> 
 <!--------------------------------------------->
 <script>search()</script> 
@@ -302,6 +311,4 @@
 
 
 
-</body>
-
-</html>
+ 
