@@ -65,6 +65,16 @@ app.get("/orgs", function(req, res){
 
  //---------------------------------------------------------------------
   
+ app.get('/org/:name', function (req, res) {
+     
+    const db = req.app.locals.db;
+    db.collection("orgs").findOne({"name" : req.params.name },function (err, org) {
+        res.render('org', {org: org});
+        console.log(org);
+    });
+});
+ 
+ /*
 app.get('/org/:name', function (req, res) {
     res.render('org', { name: req.params.name});
     const db = req.app.locals.db;
@@ -72,7 +82,7 @@ app.get('/org/:name', function (req, res) {
         res.render('org', {org: org});
     });
 });
- 
+ */
 
  
 
