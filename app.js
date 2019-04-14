@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const MongoClient = require("mongodb").MongoClient;
 //const objectId = require("mongodb").ObjectID;
-//const urlencodedParser = bodyParser.urlencoded({ extended: false}); 
+const urlencodedParser = bodyParser.urlencoded({ extended: false}); 
 const app = express();
 const jsonParser = express.json();
  
@@ -15,6 +15,8 @@ let dbClient;
  
 app.set('view engine', 'ejs');
  
+
+
 app.use('/public', express.static('public'))
 app.use('/js', express.static('js'))
  
@@ -26,13 +28,18 @@ app.get('/sportAll', function (req, res) {
     res.render('sportAll');
 })
  
- //--------------------------------------------------------
-app.get('/org/:title', function (req, res) {
-    const db = req.app.locals.db;
-    db.collection("Organisations").findOne({"title" : req.params.name},function (err, org) {
-        res.render('org', {org: org});
-    });
+ //-----------------передача данных из БД в стр орг---------------
+ /*
+app.get('/org/:name', function (req, res) {
+    res.render('org', { name: req.params.name,  });
 })
+*/
+
+
+
+
+
+
  //--------------------------------------------------------
 
  app.use(express.static(__dirname + "/public"));
@@ -55,6 +62,44 @@ app.get("/orgs", function(req, res){
         res.send(orgs)
     });
 });
+
+ //---------------------------------------------------------------------
+  
+app.get('/org/:name', function (req, res) {
+    res.render('org', { name: req.params.name});
+    const db = req.app.locals.db;
+    db.collection("orgs").findOne({"name" : req.params.name },function (err, org) {
+        res.render('org', {org: org});
+    });
+});
+ 
+
+ 
+
+
+
+
+ /*
+
+ app.get('/org/:name', function (req, res) {
+    const db = req.app.locals.db;
+    db.collection("orgs").findOne({"name" : req.params.name},function (err, org) {
+        res.render('org', {org: org});
+    });
+});
+
+*/
+
+ 
+
+ 
+
+
+
+
+ 
+
+
 
 //----------------------------Поиск-------------------------------
 
@@ -238,7 +283,10 @@ app.use(bodyParser.json());
 app.get('/contact', (req, res) => {
   res.render('contact');
 });
-  
+
+ 
+
+ 
   
   app.post('/send', (req, res) => {
     if (!req.body) return res.sendStatus(400);
@@ -302,13 +350,21 @@ app.get('/contact', (req, res) => {
         console.log('Message sent: %s', info.messageId);   
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   
-        res.render('contact', {aaa:'Заявка успешно отправлена. Администратор свяжется с Вами.'});
-    });
-    });
-  
 
-//---------------------------------
+        app.get('contact', (req, res) => {
+            res.render('contact', {msg: 'Ваша заявка отправлена. Администратор свяжется с вами'});
+          });
 
+    });
+});
+    
+    
+ /* 
+ app.get('/contact', (req, res) => {
+    res.render('contact', {msg: 'HFHFHFHFHF!!!!!'});
+  });
+
+*/
 
 
 

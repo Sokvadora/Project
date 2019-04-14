@@ -1,6 +1,7 @@
 function search(){
-let allTitleorg = [];
-let countrymetro = [];
+
+//let allTitleorg = [];
+//let countrymetro = [];
 let getorgs = [];
 let allVieworgs = [];
 
