@@ -1,10 +1,10 @@
 
 const express = require("express");
 const bodyParser = require('body-parser');
-//const path = require('path');
+const path = require('path');
 const nodemailer = require('nodemailer');
 const MongoClient = require("mongodb").MongoClient;
-//const objectId = require("mongodb").ObjectID;
+const objectId = require("mongodb").ObjectID;
 const urlencodedParser = bodyParser.urlencoded({ extended: false}); 
 const app = express();
 const jsonParser = express.json();
@@ -37,12 +37,61 @@ app.get('/org/:name', function (req, res) {
 
 
 
+ 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
  //--------------------------------------------------------
 
  app.use(express.static(__dirname + "/public"));
+ 
 //подключение к бд и серверу
 mongoClient.connect(function(err, client){
     if(err) return console.log(err);
@@ -64,7 +113,8 @@ app.get("/orgs", function(req, res){
 });
 
  //---------------------------------------------------------------------
-  
+
+
  app.get('/org/:name', function (req, res) {
      
     const db = req.app.locals.db;
@@ -73,7 +123,18 @@ app.get("/orgs", function(req, res){
         console.log(org);
     });
 });
- 
+
+  /*
+ app.get('/org/:name', function (req, res) {
+     
+    const db = req.app.locals.db;
+    db.collection("orgs").findOne({"price" : req.params.price },function (err, org) {
+        res.render("org", {org: org});
+        console.log(org);
+        
+    });
+});
+ */
  /*
 app.get('/org/:name', function (req, res) {
     res.render('org', { name: req.params.name});
@@ -269,7 +330,7 @@ app.get("/orgs", function(req, res){
 
     db.collection("orgs").find({}).toArray(function(err, orgs){
         if(err) return console.log(err);
-        res.send(orgs)
+        res.send(orgs);
         if (sumSearch.length == 0) {
             console.log( "Ничего не найдено!" );
            };

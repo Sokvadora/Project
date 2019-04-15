@@ -33,6 +33,8 @@
 </head>
 
 <body>
+        <body onLoad="loadCarts();">
+
     <!-- Шапка -->
     <% include blocks/header.ejs %>
 
@@ -40,12 +42,36 @@
     <% include blocks/search.ejs %>
 
     <!-- Организации -->
+    <div class="foo">
     <section class="container">
         <div class="row">
             <div class="orgs"> </div>
+            
             <section id="fh5co-hobby" data-section="hobby">
-        </div>
+        </div><a href="#"  class="archive" id="loadMore">Показать еще</a>
+        
     </section>
+
+</div>
+
+
+
+<script>
+  
+    //показать еще 
+function loadCarts() { 
+    $(".cart:hidden").slice(0,3).show();
+ }
+    $(function more(){
+     
+    $("#loadMore").on('click',function(e){
+        e.preventDefault();
+        $("div.cart:hidden").slice(0,3).slideDown();
+    })
+});  
+ 
+</script>
+  
 
 
 <!-- footer -->
@@ -56,9 +82,11 @@
         search()
     </script>
      
-
+ 
     <!--------------------------------------------->
+    
     <!-- jQuery -->
+    <script src="../js/scripts.js"></script>
     <script src="../js/jquery.min.js"></script>
     <!-- jQuery Easing -->
     <script src="../js/jquery.easing.1.3.js"></script>

@@ -1,3 +1,5 @@
+
+
 function search(){
 
 //let allTitleorg = [];
@@ -63,12 +65,12 @@ $('#orgs-more').empty();
 }
 
 //---------------------------------------------------------- /////////////////поиск
-$("#btn-xx").click(function () {
+$("#btnSearch").click(function () {
 let letSearch1 = [];
 let letSearch2 = [];
 let letSearch3 = []; /////////////////////////////////////////////
 let carts = "";
-
+ 
 $('#IDsearch:text').val(function(){
 
 let str = $(this).val()
@@ -95,13 +97,17 @@ data: JSON.stringify({
 }),
 success: function (sumSearch) {
     $.each(sumSearch, function (index, search) {
+        //console.log("button was clicked");
         console.log(search);
         carts += cart(search);
     })    
 $(".orgs").empty();
 $(".orgs").append(carts);
+$(".cart:hidden").slice(0,6).show();
 }
+
 })
+ 
 });
 
 // вывод организаций
@@ -117,4 +123,28 @@ return  "<div class='col-md-4'>"+
 "</div>" +"</div>"+ "</a>"  +"</div>";
 }
 Getorgs1()
+}
+
+function map() {
+    ymaps.ready(init);
+
+    function init() {
+        var myMap = new ymaps.Map("map", {
+            center: [59.89444, 30.26417],
+            zoom: 10
+        }, {
+            searchControlProvider: 'yandex#search'
+        });
+
+        //  Метка с точкой по адресу.
+        ymaps.geocode('<%= org.adres %>').then(function (res) {
+            var coord = res.geoObjects.get(0).geometry.getCoordinates();
+            var myPlacemark = new ymaps.Placemark(coord, null, {
+                preset: 'islands#darkGreenDotIcon'
+            });
+            myMap.geoObjects.add(myPlacemark);
+        });
+
+
+    }
 }

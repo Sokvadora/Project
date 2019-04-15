@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>rrrr</title>
+    <title><%= org.name %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -44,18 +44,127 @@
                     <!---Заголовок-->
                   <h2> <%= org.name %></h2> 
                   
+                  
                 </div>
             </div>
         </div>
 
       
+        <div class="fh5co-project">
+            <div class="container">
+
+                <!-------------------Колонка 1--------------------------------------------------------->
+                <!---------Строка 1---------------------------------------------------->
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <div id="imgOrg">
+                            
+                             <!---  <img src="<%= org.orgImg %>" class="img-fluid"/>-->
+                     <img src="../public/images/slide2.jpg" class="img-fluid"/>
+
+                        </div>
+
+                    </div>
+ <!---------------------------------------------------------------------------->
+                   
+                    <!-------------------Колонка 2-------------------------------------------------
+                         
+                            <div class="col-md-4">
+
+                                <div id="placeholdersa">
+
+                                    <script>
+                                        addCompAa();
+                                    </script>
+                                </div>
+
+                         <!--   </div> -------->
 
 
 
+<!--
+                         <ul class="contact-info">
+                                <li><i class="icon-map"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                                <li><i class="icon-phone"></i>+ 1235 2355 98</li>
+                                <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
+                                <li><i class="icon-globe"></i><a href="#">www.yoursite.com</a></li>
+                            </ul>
 
+                            
+------->
+<!-------------------Колонка 3- Контакты компании-------------------------------------------------------->
+                    <div class="col-md-4  text-justify">
+                             
+                          
+                            <div id="contactsOrgVolna">
+                                <%= org.adres %>
+                        </div> 
+                        <div id="priceOrgVolna">
+                            <%= org.phone %> <br>
+                            <%= org.price %> <br>
+                            <% org.metro.forEach(function(item) { %>
+                                <li><%= item %></li>
+                                <% }); %> <br>
+                                <%= org.url %>
+                        </div>
+                            </ul>
+                    </div>
+
+                </div>
+ <!-------------------Строка  описание -------------------------------------------------------->
+                <div class="row">
+
+                    <div class="col-md-12  text-justify">
+
+                        <div id="descriptionOrgVolna">
+
+                            <%=org.description %>
+                        </div>
+
+                    </div>
+
+                </div>
+<!-------------------Строка  карта-------------------------------------------------------->
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div id="map" style="width: 100%; height: 400px;"></div>
+
+                        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            ymaps.ready(init);
+
+                            function init() {
+                                var myMap = new ymaps.Map("map", {
+                                    center: [59.89444, 30.26417],
+                                    zoom: 10
+                                }, {
+                                    searchControlProvider: 'yandex#search'
+                                });
+
+                                //  Метка с точкой по адресу.
+                                ymaps.geocode('<%= org.adres %>').then(function (res) {
+                                    var coord = res.geoObjects.get(0).geometry.getCoordinates();
+                                    var myPlacemark = new ymaps.Placemark(coord, null, {
+                                        preset: 'islands#darkGreenDotIcon'
+                                    });
+                                    myMap.geoObjects.add(myPlacemark);
+                                });
+
+
+                            }
+                        </script>
+ 
+                    </div>
+ 
+                </div>
+            </div>
 
     </section>
- 
+ <!-- Footer -->
+<% include blocks/footer.ejs %>
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
     <!-- jQuery Easing -->
