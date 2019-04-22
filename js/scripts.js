@@ -1,150 +1,143 @@
+function search() {
 
+    let getOrgs = [];
+    let allViewOrgs = [];
 
-function search(){
+    function getOrgs1() {
+        $.ajax({
+            url: "/orgs",
+            type: "GET",
+            contentType: "application/json",
+            success: (orgs) => {
+                // let carts = "";
+                // let viewOrgs = 0;
+                $.each(orgs, (index, org) => {
+                    //записываем названия всех выводимых организаций в allViewOrgs
+                    allViewOrgs[index] = org.title;
+                });
+                getOrgs = orgs;
+                getOrgs2();
+            }
+        });
+    }
 
-//let allTitleorg = [];
-//let countrymetro = [];
-let getorgs = [];
-let allVieworgs = [];
-
-
-
-
-//отправка формы и получение готового списка 
-/*
-function GetFilterorg() {
-let dontVieworgs = allTitleorg;
-let flag = 0;
-let carts = "";
-let vieworgs = 0;
-
-$('.orgs').append(carts);
-$('#orgs-more').empty();
-
-}
-
-*/
-function Getorgs1() {
-$.ajax({
-    url: "/orgs",
-    type: "GET",
-    contentType: "application/json",
-    success: function (orgs) {
+    // Получение всех организаций
+    function getOrgs2() {
         let carts = "";
-        let vieworgs = 0;
-        $.each(orgs, function (index, org) {
-            //записываем названия всех выводимых организаций в allVieworgs
-            allVieworgs[index] = org.title;
-        });
-        getorgs = orgs;
-        Getorgs2();
-    }
-});
-}
-
-// Получение всех организаций
-function Getorgs2() {
-let carts = "";
-let vieworgs = 0;
-let dontVieworgs = allVieworgs;
-while ((dontVieworgs.length > 0) && (vieworgs < 5)) {
-    flag = 0;
-    $.each(getorgs, function (index, org) {
-        if (dontVieworgs[0] == org.title) {
-            // добавляем полученные элементы
-            carts += cart(org);
-            vieworgs++;
-            flag = 1;
+        let viewOrgs = 0;
+        let dontViewOrgs = allViewOrgs;
+        while ((dontViewOrgs.length > 0) && (viewOrgs < 5)) {
+            flag = 0;
+            $.each(getOrgs, (index, org) => {
+                if (dontViewOrgs[0] == org.title) {
+                    // добавляем полученные элементы
+                    carts += cart(org);
+                    viewOrgs++;
+                    flag = 1;
+                }
+            })
+            if (flag == 1) dontViewOrgs.splice(0, 1);
         }
-    })
-    if (flag == 1) dontVieworgs.splice(0, 1);
-}
-$(".orgs").append(carts);
-$('#orgs-more').empty();
+        $(".orgs").append(carts);
  
-}
-
-//---------------------------------------------------------- /////////////////поиск
-$("#btnSearch").click(function () {
-let letSearch1 = [];
-let letSearch2 = [];
-let letSearch3 = []; /////////////////////////////////////////////
-let carts = "";
- 
-$('#IDsearch:text').val(function(){
-
-let str = $(this).val()
-let res = str.toLowerCase() //перевести введенное значение в нижний регистр
-letSearch1.push(res )
-
-});
-$('#IDsearch2:text').val(function(){
-letSearch2.push($(this).val())
-});
-///////////////////////////////////////////////////////
-$('#IDsearch3:text').val(function(){
-letSearch3.push($(this).val())
-});
-
-$.ajax({
-url: "/search",
-contentType: "application/json",
-method: "POST",
-data: JSON.stringify({
-    search1: letSearch1,
-    search2: letSearch2,
-    search3: letSearch3 ///////////////
-}),
-success: function (sumSearch) {
-    $.each(sumSearch, function (index, search) {
-        //console.log("button was clicked");
-        console.log(search);
-        carts += cart(search);
-    })    
-$(".orgs").empty();
-$(".orgs").append(carts);
-$(".cart:hidden").slice(0,6).show();
-}
-
-})
- 
-});
-
-// вывод организаций
-let cart = function AllOrg (org) {  
-return  "<div class='col-md-4'>"+
-"<div class='cart fh5co-portfolio ' id='" + org._id + "'>" + 
-"<a class='name ' href='/org/" + org.name + "'>"  + 
-"<div class='portfolio-entry'>"+
-"<img src='/images/"+ org.img + "' class='portfolio-entry'/>"+
-"<div class='desc'>"+ "<p>"+ org.description +"</p>"    
-    +"</div>"+"</div>"+ "<h3 class='text-center'>"+ org.name + "</h3>"+
-"</br> Цена: " + org.price + "</br> URL: " + org.url  +"</br> " + org.metro  + "</p>"+
-"</div>" +"</div>"+ "</a>"  +"</div>";
-}
-Getorgs1()
-}
-
-function map() {
-    ymaps.ready(init);
-
-    function init() {
-        var myMap = new ymaps.Map("map", {
-            center: [59.89444, 30.26417],
-            zoom: 10
-        }, {
-            searchControlProvider: 'yandex#search'
-        });
-
-        //  Метка с точкой по адресу.
-        ymaps.geocode('<%= org.adres %>').then(function (res) {
-            var coord = res.geoObjects.get(0).geometry.getCoordinates();
-            var myPlacemark = new ymaps.Placemark(coord, null, {
-                preset: 'islands#darkGreenDotIcon'
-            });
-            myMap.geoObjects.add(myPlacemark);
-        });
-
 
     }
+
+    //---------------------------------------------------------- /////////////////поиск
+    $(".btnSearch").click(function () {
+
+        let letSearch1 = [];
+        let letSearch2 = [];
+        let letSearch3 = []; /////////////////////////////////////////////
+        let carts = "";
+
+        //doStuff(document.querySelectorAll("#IDsearch, #IDsearchGlobal"));
+
+        $('.IDsearch1:text ').val(function () {
+
+            let str = $(this).val()
+            let res = str.toLowerCase() //перевести введенное значение в нижний регистр
+            letSearch1.push(res)
+
+        });
+
+
+        $('#IDsearch2:text').val(function () {
+            letSearch2.push($(this).val())
+        });
+        ///////////////////////////////////////////////////////
+        $('#IDsearch3:text').val(function () {
+            letSearch3.push($(this).val())
+        });
+
+        $.ajax({
+            url: "/search",
+            contentType: "application/json",
+            method: "POST",
+            data: JSON.stringify({
+                search1: letSearch1,
+                search2: letSearch2,
+                search3: letSearch3 ///////////////
+            }),
+            success: (sumSearch) => {
+                $.each(sumSearch, (index, search) => {
+                    //console.log("button was clicked");
+                    console.log(search);
+                    carts += cart(search);
+
+                })
+
+                $(".orgs").empty();
+                $(".orgs").append(carts);
+ 
+                
+                $(".cart:hidden").slice(0, 6).show();
+            }
+
+        })
+
+    });  
+
+    // вывод организаций
+    let cart = (org) => {
+        return "<div class='col-md-4'>" +
+            "<div class='cart fh5co-portfolio ' id='" + org._id + "'>" +
+            "<a class='name ' href='/org/" + org.name + "'>" +
+            "<div class='portfolio-entry'>" +
+            "<img src='/images/" + org.img + "' class='portfolio-entry'/>" +
+            "<div class='desc'>" + "<p>" + org.description + "</p>" +
+            "</div>" + "</div>" + "<div class='portfolio-text text-center'>" +  "<h3>" + org.name + "</h3>" + "</div>"+
+            "</br> Цена: " + org.price + "</br> URL: " + org.url + "</br> " + org.metro + "</p>" +
+            "</div>" + "</div>" + "</a>" + "</div>";
+    }
+    getOrgs1()
 }
+
+
+
+$(function showSportCarts() {
+
+    $("#loadsportCarts").on('click', (e) => {
+        e.preventDefault();
+        $("div.sportCarts:hidden").slideDown(); //показать карточки Спорт
+        $("div.allCarts").slideUp(); // скрыть карточки категорий
+    })
+});
+
+$(function backFromSport() {
+
+    $("#backFromSport").on('click', (e) => {
+        e.preventDefault();
+        $("div.allCarts").slideDown();
+        $("div.sportCarts").slideUp();
+    })
+});
+
+
+
+
+
+
+
+
+

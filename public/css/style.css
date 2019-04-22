@@ -1,3 +1,8 @@
+
+
+
+
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -11,6 +16,8 @@
 *	Edit this section
 *
 * ======================================================= */
+
+
 body {
   font-family: "Roboto Mono", monospace;
   font-weight: 400;
@@ -260,14 +267,14 @@ a:hover, a:active, a:focus {
 
 p {
   margin-bottom: 1.5em;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #000;
-  font-family: "Roboto Mono", monospace;
-  font-weight: 400;
-  margin: 0 0 30px 0;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  margin: 0 0 10px 0;
 }
 
 ::-webkit-selection {
@@ -302,10 +309,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 #headerH #navbar li a {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Caveat', cursive;
   color: rgba(0, 0, 0, 0.6);
   position: relative;
-  font-size: 23px;
+  font-size: 27px;
   font-weight: 600;
 }
 @media screen and (max-width: 992px) {
@@ -619,11 +626,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #fh5co-glavn .text-inner h2 {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 300;
+  font-size: 40px;
+  line-height: 10px;
+  font-weight: 100;
   color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 60px 0;
+  margin: 0 0 30px 0;
 }
 #fh5co-glavn .text-inner .call-to-action {
   display: block;
@@ -772,7 +779,7 @@ div.cart {
   padding: 20px;
 }
 .fh5co-portfolio .portfolio-text h3 {
-  font-size: 20px;
+  font-size: 30px;
 }
 .fh5co-portfolio .portfolio-text .stuff {
   margin: 0;
@@ -1077,7 +1084,7 @@ div.cart {
 }
 .section-heading h2 {
   margin: 0 0 20px 0;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 400;
   position: relative;
   padding-bottom: 10px;
@@ -1117,7 +1124,7 @@ div.cart {
   text-decoration: underline;
 }
 #fh5co-footer .section-title {
-  font-size: 22px;
+  font-size: 30px;
   color: #fff;
   position: relative;
   padding-bottom: 20px;

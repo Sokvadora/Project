@@ -7,17 +7,11 @@
     <title>Sports</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
-    <script src="../js/companyAll.js"></script>
+   
     <!-- Animate.css -->
     <link rel="stylesheet" href="../public/css/animate.css">
-    <!-- Icomoon Icon Fonts
-<link rel="stylesheet" href="css/icomoon.css">-->
-    <!-- Simple Line Icons 
-<link rel="stylesheet" href="css/simple-line-icons.css">-->
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="../public/css/bootstrap.css">
     <!-- Style -->
@@ -33,54 +27,21 @@
 </head>
 
 <body>
-        <body onLoad="loadCarts();">
-
+     
     <!-- Шапка -->
     <% include blocks/header.ejs %>
-
+   
     <!-- Секция поиска -->
     <% include blocks/search.ejs %>
 
     <!-- Организации -->
-    <div class="foo">
-    <section class="container">
-        <div class="row">
-            <div class="orgs"> </div>
-            
-            <section id="fh5co-hobby" data-section="hobby">
-        </div><a href="#"  class="archive" id="loadMore">Показать еще</a>
-        
-    </section>
-
-</div>
-
-
-
-<script>
-  
-    //показать еще 
-function loadCarts() { 
-    $(".cart:hidden").slice(0,3).show();
- }
-    $(function more(){
-     
-    $("#loadMore").on('click',function(e){
-        e.preventDefault();
-        $("div.cart:hidden").slice(0,3).slideDown();
-    })
-});  
- 
-</script>
-  
+    <% include blocks/contentOrgs.ejs %>
 
 
 <!-- footer -->
     <% include blocks/footer.ejs %>
 
-   <!-- Поиск -->
-    <script>
-        search()
-    </script>
+   
      
  
     <!--------------------------------------------->

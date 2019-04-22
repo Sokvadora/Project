@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+ 
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Arts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+   
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="../public/css/bootstrap.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../js/scripts.js"></script>
+
+    <!-- Modernizr JS -->
+    <script src="../js/modernizr-2.6.2.min.js"></script>
+    <!------------------------------------------------------------>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <!------------------------------------------------------------> 
+    <script type="text/javascript" src='ajax.js'></script>
+ 
+     
+  
+ 
+  </head>
+ 
+  <body>
+ 
+   <p id="header"><i>Разработка, производство, поставка специальных машин и устройств</i></p>
+ 
+ <div class ="content">
+    <nav role="navigation">
+        <ul class="nav">
+            <li><a id="home" href="index.html" class="current">home</a></li>
+            <li><a id="about" href="includes/test.html">about</a></li>
+            <li><a id="resources" href="#">resources</a></li>
+            <li><a id="archive" href="#">archives</a></li>
+        </ul>
+     </nav>
+  </div>
+     
+   <script>  
+   
+   $("#mainhead").load("templates/header.html", function() {
+    $(this).find(".nav a").on("click", function(e) {
+        e.preventDefault();             // stop the link from firing as normal
+        $("#content").load(this.href);  // load the file specified by the link
+    });
+});
+   
+   
+   </script>
+    <div id="content"></div>
+  </body>
+</html>

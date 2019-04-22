@@ -4,16 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>НСХ</title>
+    <title>Arts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!---<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">--->
-    <link href="https://fonts.googleapis.com/css?family=Caveat&amp;subset=cyrillic" rel="stylesheet">
-
-     
-
-
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+   
     <!-- Animate.css -->
     <link rel="stylesheet" href="../public/css/animate.css">
     <!-- Bootstrap  -->
@@ -31,37 +27,27 @@
 </head>
 
 <body>
+     
     <!-- Шапка -->
     <% include blocks/header.ejs %>
+   
+ 
 
-    <!-- Секция поиска, главная-->
-    <% include blocks/section.ejs %>
+    <!-- Секция поиска -->
+    <% include blocks/search.ejs %>
 
-    <div class="allCarts">
-        <!-- Секция со всеми хобби -->
-        <% include blocks/cart_stat.ejs %>
-    </div>
-    <!---------------------------------- -->
+    <!-- Организации -->
+    <% include blocks/contentOrgs.ejs %>
 
-    <div class="sportCarts" style="display:none">
-        <% include blocks/search.ejs %>
 
-        <% include blocks/contentOrgs.ejs %>
-
-    </div>
-
-    <!---<a href="#" class="archive" id="loadsportCarts">Показать еще</a>--->
-    <!-- Footer -->
+<!-- footer -->
     <% include blocks/footer.ejs %>
 
-
-
-
-
-    <script>
-        showSportCarts()
-    </script>
-
+   
+     
+ 
+    <!--------------------------------------------->
+    
     <!-- jQuery -->
     <script src="../js/scripts.js"></script>
     <script src="../js/jquery.min.js"></script>
