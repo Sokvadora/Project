@@ -92,12 +92,11 @@ app.post("/search", jsonParser, function (req, res) {
     let sumSearch = [];
 
     //если все поля пусты - вывести все
-    if ((letSearch1.length == 0) && (letSearch2 == 0) && (letSearch3 == 0)) {
-        db.collection("orgs").find({}).toArray(function (err, orgs) {
-            if (err) return console.log(err);
+    if ((letSearch1.length == 0) && (letSearch2 == 0)&& (letSearch3 == 0)){ 
+        db.collection("orgs").find({}).toArray(function(err, orgs){
+            if(err) return console.log(err);
             res.send(orgs)
         });
-
     } else if (!(letSearch1.length == 0) && !(letSearch2 == 0)) { // если выбран ключ и метро - показать совпадения
 
         db.collection("orgs").find({

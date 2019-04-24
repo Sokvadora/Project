@@ -548,7 +548,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-#fh5co-glavn {
+#fh5co-sectionSearch {
   background-color: transparent;
   background-size: cover;
   background-attachment: fixed;
@@ -557,15 +557,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #e6e6e6;
   color: #fff;
 }
-#fh5co-glavn a {
+#fh5co-sectionSearch a {
   color: rgba(255, 255, 255, 0.8) !important;
   text-decoration: underline;
 }
-#fh5co-glavn a:hover {
+#fh5co-sectionSearch a:hover {
   color: #fff;
   text-decoration: none;
 }
-#fh5co-glavn .gradient {
+#fh5co-sectionSearch .gradient {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -574,69 +574,69 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   background: rgba(0, 0, 0, 0.5);
 }
-#fh5co-glavn, #fh5co-glavn .text-wrap {
+#fh5co-sectionSearch, #fh5co-sectionSearch .text-wrap {
   height: 900px;
 }
-#fh5co-glavn .text-wrap {
+#fh5co-sectionSearch .text-wrap {
   display: table;
   width: 100%;
   position: relative;
   z-index: 4;
 }
-#fh5co-glavn .text-inner {
+#fh5co-sectionSearch .text-inner {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
 }
-#fh5co-glavn .text-inner h1 {
+#fh5co-sectionSearch .text-inner h1 {
   font-size: 70px;
   color: white;
   margin: 0 0 40px 0;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-glavn .text-inner h1 {
+  #fh5co-sectionSearch .text-inner h1 {
     font-size: 30px;
   }
 }
-#fh5co-glavn .text-inner h1 span {
+#fh5co-sectionSearch .text-inner h1 span {
   font-size: 14px;
   text-transform: uppercase;
   display: block;
   line-height: 20px;
 }
-#fh5co-glavn .text-inner h1 .big {
+#fh5co-sectionSearch .text-inner h1 .big {
   font-size: 58px;
   text-transform: none;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-glavn .text-inner h1 .big {
+  #fh5co-sectionSearch .text-inner h1 .big {
     font-size: 30px;
   }
 }
-#fh5co-glavn .text-inner h1 .medium {
+#fh5co-sectionSearch .text-inner h1 .medium {
   font-size: 40px;
   text-transform: none;
   letter-spacing: .1em;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-glavn .text-inner h1 .medium {
+  #fh5co-sectionSearch .text-inner h1 .medium {
     font-size: 30px;
   }
 }
-#fh5co-glavn .text-inner h2 {
+#fh5co-sectionSearch .text-inner h2 {
   font-size: 40px;
   line-height: 10px;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.8);
   margin: 0 0 30px 0;
 }
-#fh5co-glavn .text-inner .call-to-action {
+#fh5co-sectionSearch .text-inner .call-to-action {
   display: block;
   width: 100%;
 }
-#fh5co-glavn .text-inner .call-to-action a {
+#fh5co-sectionSearch .text-inner .call-to-action a {
   width: 200px;
   display: inline-block;
   font-size: 20px;
@@ -653,29 +653,29 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 100px;
   border: none;
 }
-#fh5co-glavn .text-inner .call-to-action a i {
+#fh5co-sectionSearch .text-inner .call-to-action a i {
   margin-right: 5px;
   margin-top: 5px;
   font-size: 18px;
 }
-#fh5co-glavn .text-inner .call-to-action a.demo {
+#fh5co-sectionSearch .text-inner .call-to-action a.demo {
   border: 2px solid #3EC483;
   background: #3EC483;
   text-decoration: none !important;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-glavn .text-inner .call-to-action a.demo {
+  #fh5co-sectionSearch .text-inner .call-to-action a.demo {
     margin: 0 auto;
     margin-bottom: 20px;
   }
 }
-#fh5co-glavn .text-inner .call-to-action a.download {
+#fh5co-sectionSearch .text-inner .call-to-action a.download {
   border: 2px solid #00ADB5;
   background: #00ADB5;
   text-decoration: none !important;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-glavn .text-inner .call-to-action a.download {
+  #fh5co-sectionSearch .text-inner .call-to-action a.download {
     margin: 0 auto;
     margin-bottom: 20px;
   }
@@ -683,7 +683,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-test,
 #fh5co-NOT,
-#fh5co-hobby,
+#fh5co-allHobby,
 #fh5co-footer,
 #fh5co-work,
 #fh5co-counters,
@@ -694,7 +694,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 768px) {
   #fh5co-test,
   #fh5co-NOT,
-  #fh5co-hobby,
+  #fh5co-allHobby,
   #fh5co-footer,
   #fh5co-work,
   #fh5co-counters,
@@ -708,7 +708,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0;
 }
 
-.fh5co-hobby {
+.fh5co-allHobby {
   padding-bottom: 40px;
  
 }

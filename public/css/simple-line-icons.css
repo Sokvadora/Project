@@ -125,7 +125,7 @@
 .icon-pencil,
 .icon-note,
 .icon-loop,
-.icon-glavn,
+.icon-sectionSearch,
 .icon-grid,
 .icon-graph,
 .icon-microphone,
@@ -543,7 +543,7 @@
 .icon-loop:before {
   content: "\e064";
 }
-.icon-glavn:before {
+.icon-sectionSearch:before {
   content: "\e069";
 }
 .icon-grid:before {

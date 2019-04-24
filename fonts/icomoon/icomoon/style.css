@@ -92,7 +92,7 @@
 .icon-trash-o:before {
 	content: "\f014";
 }
-.icon-glavn:before {
+.icon-sectionSearch:before {
 	content: "\f015";
 }
 .icon-file-o:before {
@@ -710,7 +710,7 @@
 .icon-dashboard:before {
 	content: "\f0e4";
 }
-.icon-tacglavnter:before {
+.icon-tacsectionSearchter:before {
 	content: "\f0e4";
 }
 .icon-comment-o:before {
@@ -1982,7 +1982,7 @@
 .icon-opera:before {
 	content: "\f26a";
 }
-.icon-internet-hobbyr:before {
+.icon-internet-allHobbyr:before {
 	content: "\f26b";
 }
 .icon-television:before {

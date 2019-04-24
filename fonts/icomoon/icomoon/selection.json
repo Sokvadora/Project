@@ -526,7 +526,7 @@
 				"attrs": [],
 				"isMulticolor": false,
 				"tags": [
-					"glavn"
+					"sectionSearch"
 				],
 				"defaultCode": 61461,
 				"grid": 14
@@ -537,7 +537,7 @@
 				"order": 537,
 				"prevSize": 14,
 				"code": 61461,
-				"name": "glavn"
+				"name": "sectionSearch"
 			},
 			"setIdx": 0,
 			"setId": 4,
@@ -5236,7 +5236,7 @@
 				"isMulticolor": false,
 				"tags": [
 					"dashboard",
-					"tacglavnter"
+					"tacsectionSearchter"
 				],
 				"defaultCode": 61668,
 				"grid": 14
@@ -5245,7 +5245,7 @@
 			"properties": {
 				"id": 202,
 				"order": 719,
-				"name": "dashboard, tacglavnter",
+				"name": "dashboard, tacsectionSearchter",
 				"prevSize": 14,
 				"code": 61668
 			},
@@ -14664,7 +14664,7 @@
 				"attrs": [],
 				"isMulticolor": false,
 				"tags": [
-					"internet-hobbyr"
+					"internet-allHobbyr"
 				],
 				"defaultCode": 62059,
 				"grid": 14
@@ -14675,7 +14675,7 @@
 				"order": 1082,
 				"prevSize": 14,
 				"code": 62059,
-				"name": "internet-hobbyr"
+				"name": "internet-allHobbyr"
 			},
 			"setIdx": 0,
 			"setId": 4,
