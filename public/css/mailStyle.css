@@ -8,8 +8,21 @@ body{
   line-height:1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding:1em;
+   
 }
 
+a{
+  color: #2f412f;
+}
+
+a:active{
+  color: #168116;
+} 
+
+a:hover{
+  color: #5bd35b;
+
+}
 .container{
   max-width:1170px;
   margin-left:auto;
@@ -23,6 +36,7 @@ ul{
 }
 
 .brand{
+  font-family: 'Caveat', cursive;
   text-align: center;
 }
 
@@ -39,7 +53,11 @@ ul{
 }
 
 .company-info{
-  background:#669266;
+  background:#696969;
+}
+
+.form {
+  color: #dae6d4;
 }
 
 .company-info h3, .company-info ul{
@@ -51,7 +69,6 @@ ul{
   background:#f9fff9;
 }
 
-/* FORM STYLES */
 .contact form{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -89,7 +106,7 @@ ul{
   transition: background-color 2s ease-out;
 }
 
-/* LARGE SCREENS */
+
 @media(min-width:700px){
   .wrapper{
     display: grid;

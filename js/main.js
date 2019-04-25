@@ -4,17 +4,7 @@
 	'use strict';
 
 
-
-	//--------------------------------------
-	//$(document).ready(function() {
-	// Stuff here
-	//	});
-	//--------------------------------------
-
-
-
-
-	// iPad and iPod detection	
+	// iPad ,iPod 
 	var isiPad = function () {
 		return (navigator.platform.indexOf("iPad") != -1);
 	};
@@ -77,11 +67,11 @@
 
 	};
 
-	// ---------------------------------------------------------------------------------
 
-	// ---------------------------------------------------------------------------------
 
-	// Reflect scrolling in navigation
+
+
+	// скроллинг и навигация
 	var navActive = function (section) {
 
 		var $el = $('#navbar > ul');
@@ -117,7 +107,7 @@
 
 	};
 
-	// Window Scroll
+	// скроллинг
 	var windowScroll = function () {
 		var lastScrollTop = 0;
 

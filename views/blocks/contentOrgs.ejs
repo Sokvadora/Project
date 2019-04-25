@@ -1,46 +1,47 @@
    <!-- Организации -->
-<section style="padding: 0 0 30px;"> 
-   <body onLoad="loadCarts();">
-       <div class="foo" >
-           <section class="container">
-               <div class="row">
-                   <div class="orgs"> </div>
-                   <section id="fh5co-allHobby" data-section="allHobby"> </section>
-               </div>
+   <section style="padding: 0 0 30px;">
 
-               <div class="row">
-                    <div class="col-md-4 col-md-offset-9">  
-               <a href="#" class="archive" id="loadMore">Показать еще</a>
+       <body onLoad="loadCarts();">
+           <div class="foo">
+               <section class="container">
+                   <div class="row">
+                       <div class="orgs"> </div>
+                       <section id="fh5co-allHobby" data-section="allHobby"> </section>
+                   </div>
 
-               <a href="#" class="archive" id="backFromSport" style='Margin-left: 30px'>Назад</a>
-            </div>
-            </div>
-           </section>
-       </div>
+                   <div class="row">
+                       <div class="col-md-4 col-md-offset-9">
+                           <a href="#" class="archive" id="loadMore">Показать еще</a>
 
-
-       <script>
-           //показать еще 
-           function loadCarts() {
-               $(".cart:hidden").slice(0, 3).show();
-           }
-           $(function more() {
-
-               $("#loadMore").on('click', (e) => {
-                   e.preventDefault();
-                   $("div.cart:hidden").slice(0, 3).slideDown();
-               })
-           });
-       </script>
+                           <a href="#" class="archive" id="backFromSport" style='Margin-left: 30px'>Назад</a>
+                       </div>
+                   </div>
+               </section>
+           </div>
 
 
-       <script>
-           backFromSport()
-       </script>
+           <script>
+               //показать еще 
+               function loadCarts() {
+                   $(".cart:hidden").slice(0, 3).show();
+               }
+               $(function more() {
 
-       <!-- Поиск -->
-       <script>
-           search()
-       </script>
+                   $("#loadMore").on('click', (e) => {
+                       e.preventDefault();
+                       $("div.cart:hidden").slice(0, 3).slideDown();
+                   })
+               });
+           </script>
 
-       </section>
+
+           <script>
+               backFromSport()
+           </script>
+
+           <!-- Поиск -->
+           <script>
+               search()
+           </script>
+
+   </section>

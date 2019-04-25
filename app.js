@@ -28,18 +28,25 @@ app.get('/sportAll', function (req, res) {
     res.render('sportAll');
 })
 
- 
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
 app.get('/artAll', function (req, res) {
     res.render('artAll');
 })
 
-app.get('/example', function (req, res) {
-    res.render('example');
+app.get('/addOrganisation', function (req, res) {
+    res.render('addOrganisation');
 })
 
-app.get('/page', function (req, res) {
-    res.render('page');
-})
+
 
 app.use(express.static(__dirname + "/public"));
 
@@ -52,6 +59,8 @@ mongoClient.connect(function (err, client) {
         console.log("Сервер прослушивает порт 3000");
     });
 });
+
+
 // все данные из коллекции 
 app.get("/orgs", function (req, res) {
 
@@ -63,7 +72,48 @@ app.get("/orgs", function (req, res) {
     });
 });
 
-//-------------------передача данных в орг--------------------------------------------------
+
+//добавление организации в бд
+app.post("/addOrg", jsonParser, function (req, res) {
+
+    if (!req.body) return res.sendStatus(400);
+
+    const orgName = req.body.name;
+    const orgAge = req.body.age;
+    const orgDescription = req.body.description;
+    const orgPhone = req.body.phone;
+    const orgAdres = req.body.adres;
+    const orgMetro = req.body.metro;
+    const orgUrl = req.body.url;
+    const orgPrice = req.body.price;
+    const orgWork = req.body.work;
+    const orgKey = req.body.key;
+
+    const org = {
+        name: orgName,
+        age: orgAge,
+        description: orgDescription,
+        phone: orgPhone,
+        adres: orgAdres,
+        metro: orgMetro,
+        url: orgUrl,
+        price: orgPrice,
+        work: orgWork,
+        key: orgKey
+    };
+
+
+    const db = req.app.locals.db;
+    db.collection("orgs").insertOne(org, function (err, result) {
+
+        if (err) return console.log(err);
+        res.send(org);
+    });
+});
+
+
+
+//передача данных на страницу организации
 
 
 app.get('/org/:name', function (req, res) {
@@ -80,8 +130,8 @@ app.get('/org/:name', function (req, res) {
 
 });
 
-//----------------------------Поиск-------------------------------
 
+//Поиск
 app.post("/search", jsonParser, function (req, res) {
 
     if (!req.body) return res.sendStatus(400);
@@ -92,9 +142,9 @@ app.post("/search", jsonParser, function (req, res) {
     let sumSearch = [];
 
     //если все поля пусты - вывести все
-    if ((letSearch1.length == 0) && (letSearch2 == 0)&& (letSearch3 == 0)){ 
-        db.collection("orgs").find({}).toArray(function(err, orgs){
-            if(err) return console.log(err);
+    if ((letSearch1.length == 0) && (letSearch2 == 0) && (letSearch3 == 0)) {
+        db.collection("orgs").find({}).toArray(function (err, orgs) {
+            if (err) return console.log(err);
             res.send(orgs)
         });
     } else if (!(letSearch1.length == 0) && !(letSearch2 == 0)) { // если выбран ключ и метро - показать совпадения
@@ -115,16 +165,14 @@ app.post("/search", jsonParser, function (req, res) {
                 for (j = 0; j < searchM2.length; j++) {
                     if (searchM1[i].name == searchM2[j].name) {
                         sumSearch.push(searchM1[i]);
-                        //console.log(searchM1[i]);
-                         
 
                         continue;
                     }
                 }
             }
             res.send(sumSearch);
-            (sumSearch.length !== 0) ?  console.log(sumSearch): console.log("Ничего не найдено!");
-                
+            (sumSearch.length !== 0) ? console.log(sumSearch): console.log("Ничего не найдено!");
+
         });
 
     } else if (!(letSearch1.length == 0) && !(letSearch3 == 0)) { // если выбран ключ и возраст - показать совпадения
@@ -145,15 +193,13 @@ app.post("/search", jsonParser, function (req, res) {
                 for (j = 0; j < searchM3.length; j++) {
                     if (searchM1[i].name == searchM3[j].name) {
                         sumSearch.push(searchM1[i]);
-                        //console.log('ДВА',searchM1[i]);
-                        console.log('ДВА');
                         continue;
                     }
                 }
             }
-               
+
             res.send(sumSearch);
-                (sumSearch.length !== 0) ?  console.log(sumSearch): console.log("Ничего не найдено!");
+            (sumSearch.length !== 0) ? console.log(sumSearch): console.log("Ничего не найдено!");
         });
 
     } else if (!(letSearch2.length == 0) && !(letSearch3 == 0)) { // если выбран метро и возраст - показать совпадения
@@ -173,19 +219,18 @@ app.post("/search", jsonParser, function (req, res) {
                 for (j = 0; j < searchM3.length; j++) {
                     if (searchM2[i].name == searchM3[j].name) {
                         sumSearch.push(searchM2[i]);
-                        //console.log('ЧЕТЫРЕ',searchM2[i]);
-                        console.log('ЧЕТЫРЕ');
                         continue;
                     }
                 }
             }
-            
+
             res.send(sumSearch);
-                (sumSearch.length !== 0) ?  console.log(sumSearch): console.log("Ничего не найдено!");
+            (sumSearch.length !== 0) ? console.log(sumSearch): console.log("Ничего не найдено!");
         });
 
     } else {
         // только возраст, метро или ключ
+
         //поиск по ключевым словам 
         db.collection("orgs").find({
             'key': letSearch1
@@ -214,12 +259,12 @@ app.post("/search", jsonParser, function (req, res) {
             if (searchMetro.length > 0)
                 for (i = 0; i < searchMetro.length; i++)
                     sumSearch.push(searchMetro[i]);
-                    res.send(sumSearch);
-                    (sumSearch.length !== 0) ?  console.log(sumSearch): console.log("Ничего не найдено!");
+            res.send(sumSearch);
+            (sumSearch.length !== 0) ? console.log(sumSearch): console.log("Ничего не найдено!");
         });
     }
 
-}); 
+});
 
 
 //вывод всех
@@ -228,21 +273,12 @@ app.get("/orgs", function (req, res) {
     db.collection("orgs").find({}).toArray(function (err, orgs) {
         if (err) return console.log(err);
         res.send(orgs);
-                (sumSearch.length !== 0) ?  console.log(sumSearch): console.log("Ничего не найдено!");
+        (sumSearch.length !== 0) ? console.log(sumSearch): console.log("Ничего не найдено!");
     });
 });
 
 
 //Отправка запроса на добавление организации
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(bodyParser.json());
-
-app.get('/contact', (req, res) => {
-    res.render('contact');
-});
-
 app.post('/send', (req, res) => {
     if (!req.body) return res.sendStatus(400);
     const output = `
@@ -250,7 +286,9 @@ app.post('/send', (req, res) => {
       <h3>Информация:</h3>
       <ul>  
         <li>Наименование: ${req.body.name}</li>
+        <li>Возраст: ${req.body.age} </li>
         <li>Ключевые слова: ${req.body.key} </li>
+        <li>Стоимость: ${req.body.price} </li>
         <li>Сайт: ${req.body.mailOrg}</li>
         <li>Адрес: ${req.body.adres}</li>
         <li>Метро: ${req.body.metro}</li>
@@ -268,7 +306,7 @@ app.post('/send', (req, res) => {
         <li>Должность: ${req.body.positionUser}</li>
       </ul> `;
 
-
+    // подключение к смтп-серверу и шифрование данных клиента
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -286,17 +324,17 @@ app.post('/send', (req, res) => {
         }
     });
 
-    // setup email data with unicode symbols
+    // данные сообщения
     let mailOptions = {
-        from: 'НСХ', // sender address
-        to: 'mika.love.kattun@gmail.com', // list of receivers
-        subject: 'Новый запрос добавления организации', // Subject line
-        text: 'Имеется новый запрос', // plain text body
+        from: 'НСХ', // отправитель 
+        to: 'mika.love.kattun@gmail.com', // получатель
+        subject: 'Новый запрос добавления организации', // тема письма
+        text: 'Имеется новый запрос', // текст сообщения
         html: output // html body
 
     };
 
-    // send mail with defined transport object
+    // отправка
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log(error);

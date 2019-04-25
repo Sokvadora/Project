@@ -1,127 +1,148 @@
 <!DOCTYPE html>
 <html class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>contacts</title>
-  
-  <script  type="text/x-handlebars-template"id="template"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <title>contacts</title>
+
+  <script type="text/x-handlebars-template" id="template"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-  <link rel="stylesheet" href="../public/css/mailStyle.css"> 
-
-
-
-
+  <link rel="stylesheet" href="../public/css/mailStyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat&amp;subset=cyrillic" rel="stylesheet">
 
 </head>
+
 <body>
 
 
-
-
   <div class="container">
-    <h1 class="brand"> Добавление организации на <span> НСХ</span></h1>
+    <h1 class="brand"> Добавление организации на <span> <a s name='hrf' href="/">НСХ</a></span></h1>
     <div class="wrapper animated bounceInLeft">
-      <div class="company-info">
+      <div class="company-info form">
         <h3>Найди себе хобби</h3>
         <ul>
-          
+
           <li><i class="fa fa-phone"></i> (555) 555-5555</li>
-          <li><i class="fa fa-envelope"></i> test@acme.test</li>
+          <li><i class="fa fa-envelope"></i> hobby@gmail.com</li>
         </ul>
+
+
       </div>
       <div class="contact">
         <h3>Информация организации</h3>
-      
-    
+
+
         <form method="POST" action="send">
+
           <p>
             <label>Название организации</label>
             <input type="text" name="name">
           </p>
+
           <p>
-            <label>Ключевые слова</label>
-            <input type="text" placeholder="Плавание, танцы"name="key">
+            <label>Для какого возраста</label>
+            <input type="text" placeholder="Взрослые, дети, 60+" name="age">
           </p>
-            <p>
+
+          <p>
+              <label>Ключевые слова</label>
+              <input type="text" placeholder="Танцы, бокс, плавание" name="key">
+            </p>
+
+
+          <p>
+            <label>Стоимость р/мес</label>
+            <input type="text" name="price">
+          </p>
+
+          <p>
             <label>Адрес</label>
             <input type="text" name="adres">
           </p>
+
           <p>
             <label>Метро</label>
             <input type="text" name="metro">
           </p>
+
           <p>
             <label>Ссылка на сайт</label>
             <input type="text" name="mailOrg">
           </p>
+
           <p>
             <label>Email</label>
             <input type="email" name="email">
           </p>
+
           <p>
             <label>Контактный номер</label>
             <input type="text" name="phone">
           </p>
+
           <p>
             <label>Режим работы</label>
             <input type="text" name="work">
           </p>
+
           <p class="full">
             <label>Описание организации</label>
             <textarea name="message" rows="5"></textarea>
           </p>
-          
-          
- 
-<p class="full">
-<h3>Бизнес информация:</h3>
-</p>
+
+
+
+          <p class="full">
+            <h3>Бизнес информация:</h3>
+          </p>
           <p>
             <label>Имя контактного лица</label>
             <input type="text" name="nameUser">
           </p>
-        <p>
-            
-            <label>Укажите, пожалуйста, 
-              корректную информацию, так как перед публикацией мы должны будем 
+          <p>
+
+            <label style="margin: 15px 0  ">Укажите, пожалуйста,
+              корректную информацию, так как перед публикацией мы должны будем
               с вами связаться для уточнения информации</label>
-            
+
           </p>
-<p>
+          <p>
             <label>Номер контактного лица</label>
             <input type="text" name="phoneUser">
           </p>
-        <p>
-            <label>При указании неверной информации, компания добавлена не будет</label>
-            
+          <p>
+            <label style="margin: 15px 0  ">При указании неверной информации, компания добавлена не будет</label>
+
           </p>
-<p>
+          <p>
             <label>Должность</label>
             <input type="text" name="positionUser">
           </p>
 
 
- <p class="full">
-<label>Прикрепить файл:</label>
+          <p class="full">
+            <label>Прикрепить файл:</label>
 
-<input type="file" name="foo" multiple value="Upload">
-</p>
+            <input type="file" name="foo" multiple value="Upload">
+          </p>
 
-
-
-            <p class="full">
+          <p class="full">
             <button type="submit">Отправить</button>
           </p>
         </form>
       </div>
+
     </div>
+
   </div>
 
-<a name='hrf' href="/"> НАЖМИ МЕНЯ</a>
-</section>
-<script src="../app.js"></script>
+
+  </section>
+  <script src="../app.js"></script>
 </body>
-</html> 
+
+</html>
