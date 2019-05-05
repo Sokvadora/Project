@@ -35,7 +35,7 @@ function search() {
                     vieworgs++;
                     flag = 1;
                 }
-            })
+            });
             if (flag == 1) dontVieworgs.splice(0, 1);
         }
         $(".orgs").append(carts);
@@ -92,9 +92,9 @@ function search() {
             "<div class='cart fh5co-portfolio ' id='" + org._id + "'>" +
             "<a class='name ' href='/org/" + org.name + "'>" +
             "<div class='portfolio-entry'>" +
-            "<img src='/images/" + org.img + "' class='portfolio-entry'/>" +
+            "<img src='/images/" + org.img + "' class='portfolio-entry' />" +   
             "<div class='desc'>" + "<p>" + org.pre_description + "</p>" +
-            "</div>" + "</div>" + "<h3 class='text-center'>" + org.name + "</h3>" +
+            "</div>"+ "</div>"  + "<h3 class='text-center'  >" + org.name + "</h3>" +
             "</br> <p style='Margin-left: 30px'> Цена: " + org.price + " р./мес" + "</br> Сайт: " +
             org.url + "</br> " + "Метро: " + org.metro + "</p>" +
             "</div>" + "</div>" + "</a>" + "</div>";
@@ -167,12 +167,12 @@ function addOrg() {
         });
     }
 
-
+ 
     // сброс формы
     function reset() {
-        const form = document.forms["orgForm"];
+        const form = document.forms['orgForm'];
         form.reset();
-        form.elements["id"].value = 0;
+        form.elements['id'].value = 0;
     }
 
 

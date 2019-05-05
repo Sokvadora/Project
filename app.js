@@ -22,11 +22,11 @@ app.use('/js', express.static('js'));
 
 app.get('/', function (req, res) {
     res.render('index');
-})
+});
 
 app.get('/sportAll', function (req, res) {
     res.render('sportAll');
-})
+});
 
 app.use(bodyParser.json());
 
@@ -40,11 +40,11 @@ app.get('/contact', (req, res) => {
 
 app.get('/artAll', function (req, res) {
     res.render('artAll');
-})
+});
 
 app.get('/addOrganisation', function (req, res) {
     res.render('addOrganisation');
-})
+});
 
 
 
@@ -68,7 +68,7 @@ app.get("/orgs", function (req, res) {
 
     db.collection("orgs").find({}).toArray(function (err, orgs) {
         if (err) return console.log(err);
-        res.send(orgs)
+        res.send(orgs);
     });
 });
 
@@ -145,7 +145,7 @@ app.post("/search", jsonParser, function (req, res) {
     if ((letSearch1.length == 0) && (letSearch2 == 0) && (letSearch3 == 0)) {
         db.collection("orgs").find({}).toArray(function (err, orgs) {
             if (err) return console.log(err);
-            res.send(orgs)
+            res.send(orgs);
         });
     } else if (!(letSearch1.length == 0) && !(letSearch2 == 0)) { // если выбран ключ и метро - показать совпадения
 
@@ -238,7 +238,7 @@ app.post("/search", jsonParser, function (req, res) {
             if (err) return console.log(err);
             if (searchkey.length > 0)
                 for (i = 0; i < searchkey.length; i++)
-                    sumSearch.push(searchkey[i])
+                    sumSearch.push(searchkey[i]);
         });
 
         //поиск по возрасту
@@ -248,7 +248,7 @@ app.post("/search", jsonParser, function (req, res) {
             if (err) return console.log(err);
             if (searchAge.length > 0)
                 for (i = 0; i < searchAge.length; i++)
-                    sumSearch.push(searchAge[i])
+                    sumSearch.push(searchAge[i]);
         });
 
         //поиск по станции метро

@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
   src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
@@ -6,7 +6,7 @@
   font-style: normal;
 }
 
-
+*/
 
 body {
   font-family: "Roboto Mono", monospace;
@@ -50,8 +50,7 @@ body {
 }
 
 
-
-
+ 
 /*---------поиск */
 
 .search_name {
@@ -195,17 +194,21 @@ p {
   font-size: 20px;
 }
 
+ 
+ 
+
 h1,
-h2,
+ h2,
 h3,
 h4,
 h5,
 h6 {
   color: #000;
-  font-family: 'Caveat', cursive;
+  font-family:"Roboto Mono", monospace;
   font-weight: 600;
   margin: 0 0 10px 0;
 }
+ 
 
 ::-webkit-selection {
   color: #fff;
@@ -242,7 +245,7 @@ h6 {
 }
 
 #headerH #navbar li a {
-  font-family: 'Caveat', cursive;
+  font-family: "Roboto Mono", monospace;
   color: rgba(0, 0, 0, 0.6);
   position: relative;
   font-size: 27px;
@@ -973,7 +976,7 @@ select {
     text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
     color: #d9eef7;
     font-size: 17px;
-    font-family: Georgia, Serif;
+    font-family: "Roboto Mono", monospace;
     text-decoration: none;
     vertical-align: middle;
   }
@@ -1812,11 +1815,12 @@ select {
 
 
 .orgDescrtiption {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Roboto Mono", monospace;
   color: rgb(71, 71, 71)
 }
 
 .contactDescr {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Roboto Mono", monospace;
 }
 
+ 
